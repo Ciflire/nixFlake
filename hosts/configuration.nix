@@ -9,7 +9,7 @@
     inputs.home-manager.nixosModules.default
     ./hardware-configuration.nix
     ./nvidia.nix
-    ./zsh.nix
+    # ./zsh.nix
   ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
