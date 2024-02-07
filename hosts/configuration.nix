@@ -8,11 +8,12 @@
   imports = [ # Include the results of the hardware scan.
     inputs.home-manager.nixosModules.default
     ./hardware-configuration.nix
-    ./nvidia.nix
+    ../modules/nixos/nvidia.nix
     # ./zsh.nix
   ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   system.autoUpgrade.enable = true;
@@ -35,7 +36,7 @@
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
-  # Select internationalisation properties.
+  # Select internatzshionalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -110,6 +111,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ciflire = {
     shell = pkgs.zsh;
+    ignoreShellProgramCheck = true;
     isNormalUser = true;
     description = "VESSE Léo";
     extraGroups = [ "networkmanager" "wheel" "docker" "openrazer" "vboxusers" ];
@@ -214,7 +216,6 @@
   # Virtual Box
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
-  virtualisation.virtualbox.guest.enable = true;
   virtualisation.virtualbox.guest.x11 = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
