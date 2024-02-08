@@ -18,14 +18,9 @@
     };
 
     initExtra = ''
-      bindkey '^ ' autosuggest-accept
-      AGKOZAK_CMD_EXEC_TIME=5
-      AGKOZAK_COLORS_CMD_EXEC_TIME='yellow'
-      AGKOZAK_COLORS_PROMPT_CHAR='magenta'
-      AGKOZAK_CUSTOM_SYMBOLS=( '⇣⇡' '⇣' '⇡' '+' 'x' '!' '>' '?' )
-      AGKOZAK_MULTILINE=0
-      AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
       autopair-init
+      eval "$(direnv hook zsh)"
+
     '';
 
     plugins = with pkgs; [
