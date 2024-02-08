@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 
-let gruvbox = ../modules/home-manager/themes/gruvbox.nix { inherit pkgs; };
-
-in {
-  imports =
-    [ ../modules/home-manager/zsh.nix ../modules/home-manager/themes.nix ];
+{
+  imports = [
+    ../modules/home-manager/zsh.nix
+    # ../modules/home-manager/themes.nix
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ciflire";
@@ -70,9 +70,7 @@ in {
   #
   #  /etc/profiles/per-user/ciflire/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
+  home.sessionVariables = { EDITOR = "hx"; };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

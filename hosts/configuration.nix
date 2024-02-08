@@ -21,7 +21,7 @@
   virtualisation.docker.enable = true;
   services.udev.packages = [ pkgs.logitech-udev-rules ];
 
-  environment.sessionVariables = { EDITOR = "hx"; };
+  # environment.sessionVariables = { EDITOR = "hx"; };
   networking.hostName = "nixos"; # Define your hostname.
   fonts.fontDir.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
