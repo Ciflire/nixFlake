@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
-{
-  imports = [ ../modules/home-manager/zsh.nix ];
+let gruvbox = ../modules/home-manager/themes/gruvbox.nix { inherit pkgs; };
+
+in {
+  imports =
+    [ ../modules/home-manager/zsh.nix ../modules/home-manager/themes.nix ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ciflire";
