@@ -3,6 +3,9 @@
 {
   imports = [
     ../modules/home-manager/zsh.nix
+    ../modules/home-manager/lf.nix
+    # ../modules/home-manager/nixvim.nix
+    ../modules/home-manager/git.nix
     # ../modules/home-manager/themes.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
