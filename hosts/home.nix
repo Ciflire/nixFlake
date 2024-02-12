@@ -7,6 +7,7 @@
     # ../modules/home-manager/nixvim.nix
     ../modules/home-manager/git.nix
     # ../modules/home-manager/themes.nix
+    ../modules/home-manager/starship.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.

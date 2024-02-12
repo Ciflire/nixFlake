@@ -57,7 +57,11 @@
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-  programs.sway.enable = true;
+
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  };
 
   # Configure keymap in X11
   services.xserver = {
@@ -192,6 +196,7 @@
       unrar
       polychromatic
       zsh-powerlevel10k
+      dotnet-sdk_8
     ];
   };
 
