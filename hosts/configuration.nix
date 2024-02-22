@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, fetchurl, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -195,8 +195,7 @@
       yuzu
       unrar
       polychromatic
-      zsh-powerlevel10k
-      dotnet-sdk_8
+      ltex-ls
     ];
   };
 
@@ -221,8 +220,6 @@
   # Virtual Box
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
-  virtualisation.virtualbox.guest.x11 = true;
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Some programs need SUID wrappers, can be configured further or are

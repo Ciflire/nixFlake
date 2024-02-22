@@ -14,7 +14,7 @@
         "sudo openconnect -u vesse1u@etu --authgroup='Universite-de-Lorraine' vpn.univ-lorraine.fr";
       upgrade =
         "sudo nixos-rebuild switch --flake /home/ciflire/nixFlake#default";
-      update = "sudo nix flake update /home/ciflire/nixFlake#default";
+      update = "sudo nix flake update /home/ciflire/nixFlake";
     };
 
     initExtra = ''
