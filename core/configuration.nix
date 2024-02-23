@@ -200,7 +200,7 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users = { "ciflire" = import ./home.nix; };
+    users = { "ciflire" = import ../home/home.nix; };
   };
 
   # Allow unfree packages

@@ -3,14 +3,14 @@
 {
   imports = [
     inputs.hyprlock.homeManagerModules.hyprlock
-    ../modules/home-manager/zsh.nix
-    ../modules/home-manager/lf.nix
-    # ../modules/home-manager/nixvim.nix
-    ../modules/home-manager/git.nix
-    ../modules/home-manager/hyprland.nix
-    # ../modules/home-manager/themes.nix
-    ../modules/home-manager/starship.nix
-    # ../modules/home-manager/symlink.nix
+    ./zsh
+    ./lf
+    ./nixvim
+    ./git
+    ./hyprland
+    ./themes
+    ./starship
+    ./symlink
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
