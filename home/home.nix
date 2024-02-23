@@ -5,12 +5,10 @@
     inputs.hyprlock.homeManagerModules.hyprlock
     ./zsh
     ./lf
-    ./nixvim
+    # ./nixvim
     ./git
     ./hyprland
-    ./themes
     ./starship
-    ./symlink
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
