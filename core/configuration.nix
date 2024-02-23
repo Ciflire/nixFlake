@@ -58,11 +58,6 @@
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-  };
-
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "fr";
@@ -118,7 +113,8 @@
     ignoreShellProgramCheck = true;
     isNormalUser = true;
     description = "VESSE Léo";
-    extraGroups = [ "networkmanager" "wheel" "docker" "openrazer" "vboxusers" ];
+    extraGroups =
+      [ "networkmanager" "wheel" "docker" "openrazer" "vboxusers" "input" ];
     packages = with pkgs; [
       firefox
       kate
@@ -196,6 +192,9 @@
       unrar
       polychromatic
       ltex-ls
+      bottom
+
+      nodePackages_latest.prettier
     ];
   };
 
@@ -222,6 +221,11 @@
   virtualisation.virtualbox.host.enableExtensionPack = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # security.pam.services.swaylock.text = "auth include login";
+
+  security.polkit.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -229,6 +233,8 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  services.mpd.enable = true;
 
   # List services that you want to enable:
 

@@ -9,6 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprlock.url = "github:hyprwm/Hyprlock";
+
     nixvim = {
       url = "github:nix-community/nixvim";
       # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
@@ -18,6 +20,11 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+
+    hyprland-plugins = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -28,10 +35,8 @@
 
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/configuration.nix
-          inputs.home-manager.nixosModules.default
-        ];
+        modules =
+          [ ./core/configuration.nix inputs.home-manager.nixosModules.default ];
       };
 
     };
