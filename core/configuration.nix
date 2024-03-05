@@ -21,7 +21,8 @@
   virtualisation.docker.enable = true;
   services.udev.packages = [ pkgs.logitech-udev-rules ];
 
-  # environment.sessionVariables = { EDITOR = "hx"; };
+  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   networking.hostName = "nixos"; # Define your hostname.
   fonts.fontDir.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -31,7 +32,9 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  # networking.wireless.iwd.enable = true;
+  networking.wireless.enable = true;
+  networking.networkmanager = { enable = true; };
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -51,13 +54,17 @@
     LC_TIME = "fr_FR.UTF-8";
   };
   services.hardware.openrgb.enable = true;
+  services.blueman.enable = true;
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    xwayland.enable = true;
+  };
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "fr";
@@ -193,8 +200,12 @@
       polychromatic
       ltex-ls
       bottom
-
+      polkit-kde-agent
       nodePackages_latest.prettier
+      mangohud
+      vscode-langservers-extracted
+      nodePackages_latest.prettier
+      nodejs_21
     ];
   };
 
@@ -221,12 +232,21 @@
   virtualisation.virtualbox.host.enableExtensionPack = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # security.pam.services.swaylock.text = "auth include login";
+  security.pam.services.swaylock.text = "auth include login";
 
   security.polkit.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.greetd.enableGnomeKeyring = true;
-  # Some programs need SUID wrappers, can be configured further or are
+
+  # Enable Display Manager
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command =
+          "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
+        user = "greeter";
+      };
+    };
+  }; # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {

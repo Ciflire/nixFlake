@@ -6,8 +6,8 @@
     enableAutosuggestions = true;
     enableCompletion = true;
     shellAliases = {
-      ls = "lsd -la --directory first";
-      lr = "lsd -lR --directory first";
+      ls = "lsd -la --group-dirs first";
+      lr = "lsd -lR --group-dirs first";
       cat = "bat";
       open = "xdg-open";
       vpn =
