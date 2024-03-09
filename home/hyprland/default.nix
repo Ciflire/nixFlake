@@ -24,9 +24,9 @@
     notify-desktop
     blueman
     networkmanagerapplet
-    qpwgraph
     warp-terminal
     nm-tray
+    pavucontrol
   ];
 
   # programs.swaylock = { enable = true; };

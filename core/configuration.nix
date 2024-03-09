@@ -195,7 +195,6 @@
       pango
       gdk-pixbuf
       kitty
-      yuzu
       unrar
       polychromatic
       ltex-ls
@@ -206,6 +205,7 @@
       vscode-langservers-extracted
       nodePackages_latest.prettier
       nodejs_21
+      libsForQt5.networkmanager-qt
     ];
   };
 
