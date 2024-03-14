@@ -12,6 +12,8 @@
       open = "xdg-open";
       vpn =
         "sudo openconnect -u vesse1u@etu --authgroup='Universite-de-Lorraine' vpn.univ-lorraine.fr";
+      hyneview =
+        "env QT_QPA_PLATFORM=xcb /nix/store/xj3p8wr9xdnl2s2whhjfcn60qr1ajmkq-hyneview-4.7.4/bin/hyneview-4.7.4";
       upgrade =
         "sudo nixos-rebuild switch --flake /home/ciflire/nixFlake#default";
       update = "sudo nix flake update /home/ciflire/nixFlake";

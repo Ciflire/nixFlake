@@ -11,6 +11,8 @@
     ../modules/nixos/nvidia.nix
     # ./zsh.nix
   ];
+  # remove in some weeks
+  nixpkgs.config.permittedInsecurePackages = [ "nix-2.16.2" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
@@ -21,7 +23,7 @@
   virtualisation.docker.enable = true;
   services.udev.packages = [ pkgs.logitech-udev-rules ];
 
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   networking.hostName = "nixos"; # Define your hostname.
   fonts.fontDir.enable = true;
@@ -35,6 +37,7 @@
   # networking.wireless.iwd.enable = true;
   networking.wireless.enable = true;
   networking.networkmanager = { enable = true; };
+  # systemd.network.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -102,7 +105,6 @@
   services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
     enableSSHSupport = true;
   };
   xdg.portal = {
@@ -149,11 +151,8 @@
       dprint
       bat
       sqlitebrowser
-      (pkgs.wrapOBS {
-        plugins =
-          (with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ]);
-      })
       chromium
+      obs-studio
       wl-clipboard
       zathura
       wlroots
@@ -180,12 +179,10 @@
       luaformatter
       vlc
       xorg.xeyes
-      xwaylandvideobridge
       (lutris.override { extraLibraries = pkgs: [ pkgs.jansson ]; })
       protontricks
       openrazer-daemon
       razergenie
-      spotify-tui
       nixfmt
       nixd
       nil
@@ -206,6 +203,7 @@
       nodePackages_latest.prettier
       nodejs_21
       libsForQt5.networkmanager-qt
+      vesktop
     ];
   };
 

@@ -12,7 +12,6 @@
     brightnessctl
     killall
     inotify-tools
-    xwaylandvideobridge
     polkit_gnome
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
@@ -20,13 +19,14 @@
     cliphist
     nwg-displays
     wlr-randr
-    # hyprlock
+    hyprlock
     notify-desktop
     blueman
     networkmanagerapplet
-    warp-terminal
     nm-tray
     pavucontrol
+    xfce.thunar
+    hypridle
   ];
 
   # programs.swaylock = { enable = true; };
