@@ -128,7 +128,6 @@
       firefox
       kate
       thunderbird
-      discord-canary
       helix
       gitkraken
       vscode
@@ -160,6 +159,7 @@
       mongodb-compass
       glib
       glibc
+      arrpc
       mdbook
       qFlipper
       asusctl
@@ -184,7 +184,6 @@
       openrazer-daemon
       razergenie
       nixfmt
-      nixd
       nil
       p7zip
       btop
@@ -204,6 +203,7 @@
       nodejs_21
       libsForQt5.networkmanager-qt
       vesktop
+      heroic
     ];
   };
 

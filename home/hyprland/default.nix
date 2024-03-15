@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     swaylock
     wlogout
-    rofi
+    rofi-wayland
     rofi-bluetooth
     inputs.hyprland-plugins.packages.${pkgs.system}.grimblast
     swaynotificationcenter
