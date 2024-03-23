@@ -59,8 +59,6 @@
   services.hardware.openrgb.enable = true;
   services.blueman.enable = true;
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
   # Enable the KDE Plasma Desktop Environment.
   programs.hyprland = {
     enable = true;
@@ -125,7 +123,7 @@
     extraGroups =
       [ "networkmanager" "wheel" "docker" "openrazer" "vboxusers" "input" ];
     packages = with pkgs; [
-      firefox
+      librewolf
       kate
       thunderbird
       helix
@@ -150,7 +148,6 @@
       dprint
       bat
       sqlitebrowser
-      chromium
       obs-studio
       wl-clipboard
       zathura
@@ -204,6 +201,8 @@
       libsForQt5.networkmanager-qt
       vesktop
       heroic
+      protonup-qt
+      ryujinx
     ];
   };
 
@@ -227,7 +226,6 @@
 
   # Virtual Box
   virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   security.pam.services.swaylock.text = "auth include login";

@@ -37,10 +37,6 @@
         };
       });
     })
-    (final: prev: {
-      hyprlock = prev.hyprlock.overrideAttrs
-        (o: { patches = (o.patches or [ ]) ++ [ ../patches/hyprlock.patch ]; });
-    })
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -104,7 +100,15 @@
   #
   #  /etc/profiles/per-user/ciflire/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = { EDITOR = "hx"; };
+  home.sessionVariables = {
+    EDITOR = "hx";
+    LIBVA_DRIVER_NAME = "nvidia";
+    XDG_SESSION_TYPE = "wayland";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    WLR_NO_HARDWARE_CURSORS = 1;
+    MOZ_ENABLE_WAYLAND = 1;
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
