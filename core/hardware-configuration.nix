@@ -8,11 +8,17 @@
 
   boot.initrd.availableKernelModules =
     [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.blacklistedKernelModules =
+    [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+  boot.initrd.kernelModules = [ "nouveau" ];
   boot.kernelModules = [ "kvm-amd" "plfxlc" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams =
-    [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" "splash" "quiet" ];
+  boot.kernelParams = [
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    "splash"
+    "quiet"
+    "nvidia-drm.modeset=1"
+  ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5827e49a-bc2e-4271-8b2c-c1d558c0dc63";

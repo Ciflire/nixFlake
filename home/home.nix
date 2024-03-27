@@ -3,7 +3,7 @@
 {
   imports = [
     inputs.hyprlock.homeManagerModules.hyprlock
-    ./ags
+    # ./ags
     ./lf
     # ./nixvim
     ./git
@@ -107,7 +107,7 @@
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     WLR_NO_HARDWARE_CURSORS = 1;
-    MOZ_ENABLE_WAYLAND = 1;
+    # MOZ_ENABLE_WAYLAND = 1;
   };
 
   # Let Home Manager install and manage itself.

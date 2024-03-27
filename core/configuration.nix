@@ -8,7 +8,7 @@
   imports = [ # Include the results of the hardware scan.
     inputs.home-manager.nixosModules.default
     ./hardware-configuration.nix
-    ../modules/nixos/nvidia.nix
+    ../modules/nixos/nouveau.nix
     # ./zsh.nix
   ];
   # remove in some weeks
@@ -23,7 +23,16 @@
   virtualisation.docker.enable = true;
   services.udev.packages = [ pkgs.logitech-udev-rules ];
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    LIBVA_DRIVER_NAME = "nvidia";
+    XDG_SESSION_TYPE = "wayland";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    MOZ_ENABLE_WAYLAND = "1";
+    WLR_RENDERER = "vulkan";
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   fonts.fontDir.enable = true;
@@ -60,6 +69,7 @@
   services.blueman.enable = true;
   # Enable the X11 windowing system.
   # Enable the KDE Plasma Desktop Environment.
+  programs.sway.enable = true;
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -101,10 +111,10 @@
     true; # powers up the default Bluetooth controller on boot
 
   services.pcscd.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
   xdg.portal = {
     enable = true;
     wlr.enable = true;
@@ -123,11 +133,10 @@
     extraGroups =
       [ "networkmanager" "wheel" "docker" "openrazer" "vboxusers" "input" ];
     packages = with pkgs; [
-      librewolf
       kate
       thunderbird
-      helix
       gitkraken
+      helix
       vscode
       # gnupg
       spotify
@@ -148,7 +157,14 @@
       dprint
       bat
       sqlitebrowser
-      obs-studio
+      (pkgs.wrapOBS {
+        plugins = (with pkgs.obs-studio-plugins; [
+          wlrobs
+          obs-tuna
+          input-overlay
+          obs-pipewire-audio-capture
+        ]);
+      })
       wl-clipboard
       zathura
       wlroots
@@ -203,6 +219,7 @@
       heroic
       protonup-qt
       ryujinx
+      librewolf
     ];
   };
 
