@@ -1,21 +1,24 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   programs.zsh = {
     enable = true;
     autocd = true;
     dotDir = ".config/zsh";
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
     shellAliases = {
       ls = "lsd -la --group-dirs first";
       lr = "lsd -lR --group-dirs first";
       cat = "bat";
       open = "xdg-open";
-      vpn =
-        "sudo openconnect -u vesse1u@etu --authgroup='Universite-de-Lorraine' vpn.univ-lorraine.fr";
-      hyneview =
-        "env QT_QPA_PLATFORM=xcb /nix/store/xj3p8wr9xdnl2s2whhjfcn60qr1ajmkq-hyneview-4.7.4/bin/hyneview-4.7.4";
-      upgrade =
-        "sudo nixos-rebuild switch --flake /home/ciflire/nixFlake#default";
+      vpn = "sudo openconnect -u vesse1u@etu --authgroup='Universite-de-Lorraine' vpn.univ-lorraine.fr";
+      hyneview = "env QT_QPA_PLATFORM=xcb /nix/store/xj3p8wr9xdnl2s2whhjfcn60qr1ajmkq-hyneview-4.7.4/bin/hyneview-4.7.4";
+      upgrade = "sudo nixos-rebuild switch --flake /home/ciflire/nixFlake#default";
       update = "sudo nix flake update /home/ciflire/nixFlake";
     };
 
@@ -58,5 +61,4 @@
       # }
     ];
   };
-
 }

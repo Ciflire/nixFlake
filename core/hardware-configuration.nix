@@ -8,15 +8,17 @@
 
   boot.initrd.availableKernelModules =
     [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.blacklistedKernelModules =
+  # boot.blacklistedKernelModules =
+  #   [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+  boot.initrd.kernelModules = 
     [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
-  boot.initrd.kernelModules = [ "nouveau" ];
+  # boot.initrd.kernelModules = [ "nouveau" ];
+  boot.blacklistedKernelModules = [ "nouveau" ];
   boot.kernelModules = [ "kvm-amd" "plfxlc" ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     "splash"
-    "quiet"
     "nvidia-drm.modeset=1"
   ];
 

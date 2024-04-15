@@ -1,8 +1,12 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
-    inputs.hyprlock.homeManagerModules.hyprlock
     # ./ags
     ./lf
     # ./nixvim
@@ -12,7 +16,6 @@
     ./qt
     ./starship
     ./zsh
-
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.

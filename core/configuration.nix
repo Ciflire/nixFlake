@@ -33,7 +33,7 @@
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     WLR_NO_HARDWARE_CURSORS = "1";
     MOZ_ENABLE_WAYLAND = "1";
-    WLR_RENDERER = "vulkan";
+    # WLR_RENDERER = "vulkan";
   };
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -46,11 +46,9 @@
 
   # Enable networking
   # networking.wireless.iwd.enable = true;
-  networking.wireless.enable = true;
-  networking.networkmanager = {
-    enable = true;
-  };
   # systemd.network.enable = true;
+  networking.wireless.iwd.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -193,11 +191,14 @@
       mangohud
       libsForQt5.networkmanager-qt
       vesktop
+      arrpc
       heroic
       protonup-qt
       ryujinx
       librewolf
       yazi
+      nixfmt-rfc-style
+      nil
     ];
   };
 
@@ -252,6 +253,10 @@
   # };
 
   services.mpd.enable = true;
+
+  # You need those lines for power management and tray icons
+  services.upower.enable = true;
+  services.gvfs.enable = true;
 
   # List services that you want to enable:
 

@@ -5,9 +5,9 @@
 
     ags.url = "github:Aylur/ags";
 
-    hyprshot.url = "github:Gustash/hyprshot";
-
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -30,6 +30,9 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hypridle.url = "github:hyprwm/hypridle";
+
   };
 
   outputs =

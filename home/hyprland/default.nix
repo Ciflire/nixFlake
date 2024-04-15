@@ -10,9 +10,7 @@
     wlogout
     rofi-wayland
     rofi-bluetooth
-    inputs.hyprland-plugins.packages.${pkgs.system}.grimblast
     inputs.ags.packages.${pkgs.system}.ags
-    inputs.hyprshot.packages.${pkgs.syste}.hyprshot
     brightnessctl
     killall
     inotify-tools
@@ -22,12 +20,18 @@
     cliphist
     nwg-displays
     wlr-randr
-    hyprlock
     notify-desktop
     blueman
     networkmanagerapplet
     nm-tray
-    xfce.thunar
-    hypridle
+    xfce.thunar # file manager
+
+    # idle tool
+    inputs.hypridle.packages.${pkgs.system}.hypridle
+    inputs.hyprlock.packages.${pkgs.system}.hyprlock
+
+    # screenshots
+    grimblast
+    swappy
   ];
 }
