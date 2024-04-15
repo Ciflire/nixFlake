@@ -2,6 +2,11 @@
   description = "Nixos config flake";
 
   inputs = {
+
+    ags.url = "github:Aylur/ags";
+
+    hyprshot.url = "github:Gustash/hyprshot";
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -25,20 +30,24 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs =
+    { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
+    in
+    {
 
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules =
-          [ ./core/configuration.nix inputs.home-manager.nixosModules.default ];
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          ./core/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
       };
-
     };
 }

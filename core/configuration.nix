@@ -5,10 +5,12 @@
 { pkgs, inputs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     inputs.home-manager.nixosModules.default
     ./hardware-configuration.nix
-    ../modules/nixos/nouveau.nix
+    ../modules/nixos/nvidia.nix
+    # ../modules/nixos/nouveau.nix
     # ./zsh.nix
   ];
   # remove in some weeks
@@ -45,7 +47,9 @@
   # Enable networking
   # networking.wireless.iwd.enable = true;
   networking.wireless.enable = true;
-  networking.networkmanager = { enable = true; };
+  networking.networkmanager = {
+    enable = true;
+  };
   # systemd.network.enable = true;
 
   # Set your time zone.
@@ -107,8 +111,7 @@
     #media-session.enable = true;
   };
   hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot =
-    true; # powers up the default Bluetooth controller on boot
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   services.pcscd.enable = true;
   # programs.gnupg.agent = {
@@ -123,27 +126,29 @@
   };
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
-  fonts.packages = with pkgs; [ fira-code-nerdfont mononoki ];
+  fonts.packages = with pkgs; [
+    fira-code-nerdfont
+    mononoki
+  ];
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ciflire = {
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
     isNormalUser = true;
     description = "VESSE Léo";
-    extraGroups =
-      [ "networkmanager" "wheel" "docker" "openrazer" "vboxusers" "input" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "openrazer"
+      "vboxusers"
+      "input"
+    ];
     packages = with pkgs; [
-      kate
       thunderbird
       gitkraken
       helix
-      vscode
-      # gnupg
       spotify
-      # wine
-      # wine64
-      # winetricks
-      # wineWowPackages.stable
       (wineWowPackages.full.override {
         wineRelease = "staging";
         mingwSupport = true;
@@ -153,79 +158,56 @@
       openconnect
       zellij
       lazygit
-      marksman
-      dprint
       bat
-      sqlitebrowser
       (pkgs.wrapOBS {
-        plugins = (with pkgs.obs-studio-plugins; [
-          wlrobs
-          obs-tuna
-          input-overlay
-          obs-pipewire-audio-capture
-        ]);
+        plugins = (
+          with pkgs.obs-studio-plugins;
+          [
+            wlrobs
+            obs-tuna
+            input-overlay
+            obs-pipewire-audio-capture
+          ]
+        );
       })
       wl-clipboard
       zathura
-      wlroots
-      openssl
       mongodb-compass
-      glib
-      glibc
-      arrpc
-      mdbook
       qFlipper
       asusctl
-      ntfs3g
       direnv
       pre-commit
       rustup
       libreoffice-qt
       pdf2svg
       unzip
-      solaar
-      wezterm
-      gcc
       zip
-      lua
-      lua-language-server
-      luaformatter
       vlc
-      xorg.xeyes
       (lutris.override { extraLibraries = pkgs: [ pkgs.jansson ]; })
       protontricks
-      openrazer-daemon
-      razergenie
-      nixfmt
-      nil
       p7zip
       btop
-      appimage-run
-      pango
-      gdk-pixbuf
       kitty
       unrar
       polychromatic
-      ltex-ls
-      bottom
-      polkit-kde-agent
-      nodePackages_latest.prettier
       mangohud
-      vscode-langservers-extracted
-      nodePackages_latest.prettier
-      nodejs_21
       libsForQt5.networkmanager-qt
       vesktop
       heroic
       protonup-qt
       ryujinx
       librewolf
+      yazi
     ];
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = { "ciflire" = import ../home/home.nix; };
+    extraSpecialArgs = {
+      inherit inputs;
+    };
+    users = {
+      "ciflire" = import ../home/home.nix;
+    };
   };
 
   # Allow unfree packages
@@ -243,7 +225,10 @@
 
   # Virtual Box
   virtualisation.virtualbox.host.enable = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   security.pam.services.swaylock.text = "auth include login";
 
@@ -254,8 +239,7 @@
     enable = true;
     settings = {
       default_session = {
-        command =
-          "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
         user = "greeter";
       };
     };
@@ -287,5 +271,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
