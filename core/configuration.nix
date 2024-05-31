@@ -6,25 +6,16 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
     inputs.home-manager.nixosModules.default
     ./hardware-configuration.nix
     ../modules/nixos/nvidia.nix
-    # ../modules/nixos/nouveau.nix
-    # ./zsh.nix
   ];
-  # remove in some weeks
-  nixpkgs.config.permittedInsecurePackages = [ "nix-2.16.2" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
-  boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true;
-  virtualisation.docker.enable = true;
-  services.udev.packages = [ pkgs.logitech-udev-rules ];
 
+  # Environment variables
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     LIBVA_DRIVER_NAME = "nvidia";
@@ -36,26 +27,22 @@
     # WLR_RENDERER = "vulkan";
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  # Hostname
+  networking.hostName = "g713";
+  # Enable .local/share/fonts
   fonts.fontDir.enable = true;
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  # networking.wireless.iwd.enable = true;
-  # systemd.network.enable = true;
   networking.wireless.iwd.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
-  # Select internatzshionalisation properties.
+  # System language
   i18n.defaultLocale = "en_GB.UTF-8";
-
+  # Other locale setup
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "fr_FR.UTF-8";
     LC_IDENTIFICATION = "fr_FR.UTF-8";
@@ -67,21 +54,15 @@
     LC_TELEPHONE = "fr_FR.UTF-8";
     LC_TIME = "fr_FR.UTF-8";
   };
-  services.hardware.openrgb.enable = true;
+
+  # Blueman applet
   services.blueman.enable = true;
   # Enable the X11 windowing system.
   # Enable the KDE Plasma Desktop Environment.
-  programs.sway.enable = true;
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    portalPackage = pkgs.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
-  };
-  # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "fr";
-    xkb.variant = "";
   };
 
   services.asusd.enable = true;
@@ -101,33 +82,13 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
     jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
-  services.pcscd.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    # gtk portal needed to make gtk apps happy
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
-  fonts.packages = with pkgs; [
-    fira-code-nerdfont
-    mononoki
-  ];
+  services.libinput.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ciflire = {
     shell = pkgs.zsh;
@@ -143,20 +104,42 @@
       "input"
     ];
     packages = with pkgs; [
-      thunderbird
+      # Archive managers
+      zip
+      p7zip
+      unzip
+      unrar
+
+      thunderbird # Mail
+
+      # version control manager
       gitkraken
+      lazygit
+
+      # Terminal tools
       helix
-      spotify
+      lsd
+      zellij
+      bat
+      btop
+      kitty
+      yazi
+
+      # Minecraft
+      prismlauncher
+      zulu8
+
+      # Proton/Wine helpers
       (wineWowPackages.full.override {
         wineRelease = "staging";
         mingwSupport = true;
       })
       winetricks
-      lsd
+      protonup-qt
+      protontricks
+
+      spotify
       openconnect
-      zellij
-      lazygit
-      bat
       (pkgs.wrapOBS {
         plugins = (
           with pkgs.obs-studio-plugins;
@@ -175,30 +158,22 @@
       asusctl
       direnv
       pre-commit
-      rustup
       libreoffice-qt
-      pdf2svg
-      unzip
-      zip
       vlc
       (lutris.override { extraLibraries = pkgs: [ pkgs.jansson ]; })
-      protontricks
-      p7zip
-      btop
-      kitty
-      unrar
       polychromatic
       mangohud
       libsForQt5.networkmanager-qt
       vesktop
       arrpc
       heroic
-      protonup-qt
       ryujinx
       librewolf
-      yazi
       nixfmt-rfc-style
       nil
+      pulsemixer
+      element-desktop
+      fastfetch
     ];
   };
 
@@ -225,7 +200,7 @@
   programs.steam.enable = true;
 
   # Virtual Box
-  virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enable = true;
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"

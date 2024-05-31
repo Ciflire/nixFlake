@@ -8,8 +8,7 @@
 
   home.packages = with pkgs; [
     wlogout
-    rofi-wayland
-    rofi-bluetooth
+    wofi
     inputs.ags.packages.${pkgs.system}.ags
     brightnessctl
     killall
@@ -33,5 +32,7 @@
     # screenshots
     grimblast
     swappy
+
+    nvidia-vaapi-driver
   ];
 }

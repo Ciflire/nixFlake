@@ -9,6 +9,8 @@
 
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
+    stylix.url = "github:danth/stylix";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,15 +18,7 @@
 
     hyprlock.url = "github:hyprwm/Hyprlock";
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
-      # url = "github:nix-community/nixvim/nixos-23.05";
-
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     hyprland-plugins = {
       url = "github:hyprwm/contrib";
@@ -32,7 +26,6 @@
     };
 
     hypridle.url = "github:hyprwm/hypridle";
-
   };
 
   outputs =
@@ -50,6 +43,7 @@
         modules = [
           ./core/configuration.nix
           inputs.home-manager.nixosModules.default
+          inputs.stylix.nixosModules.stylix
         ];
       };
     };
