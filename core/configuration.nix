@@ -7,12 +7,14 @@
 {
   imports = [
     inputs.home-manager.nixosModules.default
+    ../ricing/stylix.nix
     ./hardware-configuration.nix
     ../modules/nixos/nvidia.nix
   ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.timeout = 20;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Environment variables
@@ -59,11 +61,6 @@
   services.blueman.enable = true;
   # Enable the X11 windowing system.
   # Enable the KDE Plasma Desktop Environment.
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    xwayland.enable = true;
-  };
 
   services.asusd.enable = true;
 
@@ -174,6 +171,7 @@
       pulsemixer
       element-desktop
       fastfetch
+      qpwgraph
     ];
   };
 

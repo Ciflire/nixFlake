@@ -26,6 +26,8 @@
     };
 
     hypridle.url = "github:hyprwm/hypridle";
+
+    hyprpaper.url = "github:hyprwm/hyprpaper";
   };
 
   outputs =

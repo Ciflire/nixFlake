@@ -21,12 +21,6 @@
   # manage.
   home.username = "ciflire";
   home.homeDirectory = "/home/ciflire";
-  home.pointerCursor = {
-    gtk.enable = true;
-    package = pkgs.gnome.adwaita-icon-theme;
-    name = "Adwaita";
-    size = 16;
-  };
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
