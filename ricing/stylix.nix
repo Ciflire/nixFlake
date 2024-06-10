@@ -6,12 +6,14 @@
 }:
 {
   stylix = {
-    image = ../arog.jpg;
+    enable = true;
+    image = /home/ciflire/nixFlake/home/hyprland/arog.jpg;
+    autoEnable = true;
     polarity = "dark";
     cursor = {
-      package = pkgs.gnome.adwaita-icon-theme;
-      name = "Adwaita";
-      size = 16;
+      name = "BreezeX-RosePine-Linux";
+      package = pkgs.rose-pine-cursor;
+      size = 28;
     };
   };
 }

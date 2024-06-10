@@ -28,6 +28,8 @@
     hypridle.url = "github:hyprwm/hypridle";
 
     hyprpaper.url = "github:hyprwm/hyprpaper";
+
+    steam-tui.url = "github:dmadisetti/steam-tui";
   };
 
   outputs =

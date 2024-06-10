@@ -2,7 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  types,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -99,6 +105,7 @@
       "openrazer"
       "vboxusers"
       "input"
+      "libvirtd"
     ];
     packages = with pkgs; [
       # Archive managers
@@ -121,6 +128,9 @@
       btop
       kitty
       yazi
+      fzf
+      atuin
+      tldr
 
       # Minecraft
       prismlauncher
@@ -172,6 +182,8 @@
       element-desktop
       fastfetch
       qpwgraph
+      qemu
+      inputs.steam-tui.packages.${pkgs.system}.steam-tui
     ];
   };
 
@@ -231,6 +243,24 @@
   services.upower.enable = true;
   services.gvfs.enable = true;
 
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [
+          (pkgs.OVMF.override {
+            secureBoot = true;
+            tpmSupport = true;
+          }).fd
+        ];
+      };
+    };
+  };
+  programs.virt-manager.enable = true;
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

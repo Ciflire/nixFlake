@@ -5,6 +5,15 @@
   ...
 }:
 {
+  xdg.portal = {
+    enable = true;
+    configPackages = [ inputs.hyprland.packages.${pkgs.system}.hyprland ];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -12,7 +21,10 @@
     settings = {
       "$mod" = "SUPER";
       "$menu" = "wofi";
-      "exec-once" = "ags";
+      "exec-once" = [
+        "ags &"
+        "/nix/store/$(ls -la /nix/store | grep 'mate-polkit' | grep '4096' | awk '{print $9}' | sed -n '$p')/libexec/polkit-mate-authentication-agent-1 & "
+      ];
       source = [
         "./monitors.conf"
         "./workspaces.conf"
@@ -31,7 +43,7 @@
         "$mod, V, togglefloating, "
         "$mod, P, pseudo, # dwindle"
         "$mod, J, togglesplit, # dwindle"
-        "$mod SHIFT, L, exec, hyprlock"
+        "$mod SHIFT, L, exec, loginctl lock-session"
         "$mod, S, exec, spotify"
         "$mod, T, exec, thunderbird"
         "$mod, escape, exec, wlogout"
@@ -95,12 +107,9 @@
       ipc = "on";
       splash = true;
       splash_offset = 2.0;
-      preload = [ "arog.jpg" ];
+      preload = [ "/home/ciflire/nixFlake/home/hyprland/arog.jpg" ];
 
-      wallpaper = [
-        "eDP-2,arog.jpg"
-        "HDMI-A-1,arog.jpg"
-      ];
+      wallpaper = [ ",/home/ciflire/nixFlake/home/hyprland/arog.jpg" ];
     };
   };
   services.hypridle = {
@@ -108,20 +117,30 @@
     package = inputs.hypridle.packages.${pkgs.system}.hypridle;
     settings = {
       general = {
-        after_sleep_cmd = "hyprctl dispatch dpms on";
-        ignore_dbus_inhibit = false;
-        lock_cmd = "hyprlock";
+        lock_cmd = "pidof hyprlock || ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock";
+        before_sleep_cmd = "loginctl lock-session";
+        after_sleep_cmd = "${
+          inputs.hyprland.packages.${pkgs.system}.hyprland
+        }/bin/hyprctl dispatch dpms on";
       };
-
       listener = [
         {
-          timeout = 20;
-          on-timeout = "hyprlock";
+          timeout = 120;
+          on-timeout = "loginctl lock-session";
         }
         {
-          timeout = 1200;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
+          timeout = 150;
+          on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl -sd asus::kbd_backlight set 0";
+          on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -rd asus::kbd_backlight";
+        }
+        {
+          timeout = 150;
+          on-timeout = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms off";
+          on-resume = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms on";
+        }
+        {
+          timeout = 1800;
+          on-timeout = "systemctl suspend";
         }
       ];
     };
@@ -129,10 +148,11 @@
   services.arrpc.enable = true;
   programs.hyprlock = {
     enable = true;
+    package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
     settings = {
       general = {
         disable_loading_bar = false;
-        grace = 3;
+        grace = 0;
         hide_cursor = true;
       };
       background = {
@@ -174,6 +194,8 @@
     networkmanagerapplet
     nm-tray
     xfce.thunar # file manager
+
+    mate.mate-polkit
 
     inputs.hyprpaper.packages.${pkgs.system}.hyprpaper
     inputs.hypridle.packages.${pkgs.system}.hypridle

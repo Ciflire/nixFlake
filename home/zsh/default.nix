@@ -5,6 +5,10 @@
   ...
 }:
 {
+  programs.atuin = {
+    enable = true;
+    enableZshIntegration = true;
+  };
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -12,7 +16,8 @@
     autosuggestion.enable = true;
     enableCompletion = true;
     shellAliases = {
-      ls = "lsd -la --group-dirs first";
+      ls = "lsd --group-dirs first";
+      la = "lsd -la --group-dirs first";
       lr = "lsd -lR --group-dirs first";
       cat = "bat";
       open = "xdg-open";

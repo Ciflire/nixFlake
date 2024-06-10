@@ -13,7 +13,7 @@
     ./git
     ./gtk
     ./hyprland
-    ./qt
+    # ./qt
     ./starship
     ./zsh
   ];
