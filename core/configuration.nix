@@ -65,6 +65,7 @@
 
   # Blueman applet
   services.blueman.enable = true;
+  services.xserver.wacom.enable = true;
   # Enable the X11 windowing system.
   # Enable the KDE Plasma Desktop Environment.
 

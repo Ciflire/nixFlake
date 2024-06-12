@@ -12,6 +12,7 @@
     # ./nixvim
     ./git
     ./gtk
+    ./helix
     ./hyprland
     ./kitty
     ./qt
