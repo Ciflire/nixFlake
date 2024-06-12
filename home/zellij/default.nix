@@ -2,6 +2,6 @@
 {
   programs.zellij = {
     enable = true;
-    enableZshIntegration = true;
+    # enableZshIntegration = true;
   };
 }

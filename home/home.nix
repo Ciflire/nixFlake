@@ -17,6 +17,7 @@
     ./kitty
     ./qt
     ./starship
+    ./wlogout
     ./zellij
     ./zsh
   ];

@@ -122,12 +122,9 @@
       lazygit
 
       # Terminal tools
-      helix
       lsd
-      zellij
       bat
       btop
-      kitty
       yazi
       fzf
       atuin

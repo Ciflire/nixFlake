@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}:
+{ pkgs, inputs, ... }:
 {
   xdg.portal = {
     enable = true;
@@ -178,7 +174,6 @@
   };
 
   home.packages = with pkgs; [
-    wlogout
     wofi
     inputs.ags.packages.${pkgs.system}.ags
     brightnessctl
