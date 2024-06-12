@@ -7,7 +7,8 @@
 {
   stylix = {
     enable = true;
-    image = /home/ciflire/nixFlake/home/hyprland/arog.jpg;
+    base16Scheme = ./base16schemes/macchiato.yaml;
+    image = /home/ciflire/nixFlake/home/hyprland/catppuccin_triangle.png;
     autoEnable = true;
     polarity = "dark";
     cursor = {

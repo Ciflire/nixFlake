@@ -107,9 +107,11 @@
       ipc = "on";
       splash = true;
       splash_offset = 2.0;
-      preload = [ "/home/ciflire/nixFlake/home/hyprland/arog.jpg" ];
+      preload = [ "/home/ciflire/nixFlake/home/hyprland/catppuccin_triangle.png
+.jpg" ];
 
-      wallpaper = [ ",/home/ciflire/nixFlake/home/hyprland/arog.jpg" ];
+      wallpaper = [ ",/home/ciflire/nixFlake/home/hyprland/catppuccin_triangle.png
+.jpg" ];
     };
   };
   services.hypridle = {
@@ -125,16 +127,16 @@
       };
       listener = [
         {
-          timeout = 120;
+          timeout = 150;
           on-timeout = "loginctl lock-session";
         }
         {
-          timeout = 150;
+          timeout = 120;
           on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl -sd asus::kbd_backlight set 0";
           on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -rd asus::kbd_backlight";
         }
         {
-          timeout = 150;
+          timeout = 120;
           on-timeout = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms off";
           on-resume = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms on";
         }
