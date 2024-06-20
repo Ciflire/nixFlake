@@ -107,6 +107,7 @@
       "vboxusers"
       "input"
       "libvirtd"
+      "video"
     ];
     packages = with pkgs; [
       # Archive managers
@@ -259,6 +260,8 @@
     };
   };
   programs.virt-manager.enable = true;
+
+  hardware.opentabletdriver.enable = true;
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

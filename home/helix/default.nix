@@ -8,6 +8,11 @@
         auto-format = true;
         formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
       }
+      {
+        name = "typst";
+        auto-format = true;
+        formatter.command = "${pkgs.typstyle}/bin/typstyle";
+      }
     ];
     settings = lib.mkForce {
       theme = "stylix";
@@ -47,9 +52,9 @@
           mode.insert = "INSERT";
           mode.select = "SELECT";
         };
-        lsp = {
-          display-inlay-hints = true;
-        };
+        # lsp = {
+        #   display-inlay-hints = true;
+        # };
         file-picker = {
           hidden = false;
           git-ignore = true;

@@ -14,6 +14,22 @@
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.enable = true;
     settings = {
+      animation = [
+        "windowsIn, 1,2,windowIn, slide"
+        "windowsOut,1,2,windowOut, slide"
+        "windowsMove,1,2,windowMove, slide"
+      ];
+      bezier = [
+        "windowIn, 0.27,0.1,0,1"
+        "windowOut, 1,0,0.73,0.9"
+        "windowMove, 0.3,0,0.7,1"
+      ];
+      # general = {
+      #   border_size = 2;
+      #   gaps_in = 3;
+      #   gaps_out = 7;
+
+      # };
       "$mod" = "SUPER";
       "$menu" = "wofi";
       "exec-once" = [
@@ -23,6 +39,7 @@
       source = [
         "./monitors.conf"
         "./workspaces.conf"
+        "./hyprland_test.conf"
       ];
       env = [
         "HYPRCURSOR_THEME, rose-pine-cursor"
@@ -92,6 +109,8 @@
       input = {
         kb_layout = "fr";
       };
+
+      windowrulev2 = [ "float, class:^(xdg-desktop-portal)" ];
     };
   };
 
@@ -102,11 +121,10 @@
       ipc = "on";
       splash = true;
       splash_offset = 2.0;
-      preload = [ "/home/ciflire/nixFlake/home/hyprland/catppuccin_triangle.png
-.jpg" ];
+      preload = [ "/home/ciflire/nixFlake/home/hyprland/wallpapers/landscapes/forest.png" ];
 
-      wallpaper = [ ",/home/ciflire/nixFlake/home/hyprland/catppuccin_triangle.png
-.jpg" ];
+      wallpaper = [ ",/home/ciflire/nixFlake/home/hyprland/wallpapers/landscapes/forest.png" ];
+
     };
   };
   services.hypridle = {
@@ -153,7 +171,7 @@
         hide_cursor = true;
       };
       background = {
-        path = "screenshot";
+        path = "/home/ciflire/nixFlake/home/hyprland/catppuccin_triangle.png";
         blur_passes = 3;
         blur_size = 8;
       };
@@ -185,7 +203,7 @@
     cliphist
     nwg-displays
     wlr-randr
-    notify-desktop
+    libnotify
     blueman
     networkmanagerapplet
     nm-tray
@@ -201,5 +219,12 @@
     swappy
 
     nvidia-vaapi-driver
+
+    opentabletdriver
+    xournalpp
+
+    osu-lazer-bin
+
+    qt5ct
   ];
 }

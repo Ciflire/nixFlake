@@ -1,0 +1,3 @@
+[submodule "home/hyprland/wallpapers"]
+	path = home/hyprland/wallpapers
+	url = git@github.com:Gingeh/wallpapers.git

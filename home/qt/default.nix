@@ -2,6 +2,8 @@
 {
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
+    platformTheme.name = "qtct";
   };
+
+  home.packages = with pkgs; [ catppuccin-qt5ct ];
 }
