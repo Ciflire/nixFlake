@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 {
   xdg.portal = {
     enable = true;
@@ -15,26 +20,49 @@
     xwayland.enable = true;
     settings = {
       animation = [
-        "windowsIn, 1,2,windowIn, slide"
-        "windowsOut,1,2,windowOut, slide"
+        "windowsIn, 1,2,windowIn, slide bottom"
+        "windowsOut,1,2,windowOut, slide bottom"
         "windowsMove,1,2,windowMove, slide"
+        "workspaces, 1, 3, workspace, slide"
       ];
       bezier = [
         "windowIn, 0.27,0.1,0,1"
         "windowOut, 1,0,0.73,0.9"
         "windowMove, 0.3,0,0.7,1"
+        "workspace, 0.53,0.02,0.69,1"
       ];
+      blurls = [ "top-bar" ];
       # general = {
       #   border_size = 2;
       #   gaps_in = 3;
       #   gaps_out = 7;
 
       # };
+      decoration = {
+        rounding = 10;
+        active_opacity = 0.9;
+        inactive_opacity = 0.8;
+        fullscreen_opacity = 1;
+        blur = {
+          enabled = true;
+          size = 8;
+          passes = 2;
+          new_optimizations = true;
+          ignore_opacity = true;
+        };
+      };
+      general = {
+        border_size = 0;
+        gaps_in = 4;
+        gaps_out = 7;
+      };
       "$mod" = "SUPER";
-      "$menu" = "wofi";
+      "$menu" = "rofi";
       "exec-once" = [
         "ags &"
         "/nix/store/$(ls -la /nix/store | grep 'mate-polkit' | grep '4096' | awk '{print $9}' | sed -n '$p')/libexec/polkit-mate-authentication-agent-1 & "
+        "wl-paste --type text --watch cliphist store #Stores only text data&"
+        "wl-paste --type image --watch cliphist store #Stores only image data &"
       ];
       source = [
         "./monitors.conf"
@@ -45,19 +73,21 @@
         "HYPRCURSOR_THEME, rose-pine-cursor"
         "HYPRCURSOR_SIZE, 28"
       ];
+      debug.disable_logs = false;
       bind = [
         "$mod, Return, exec,kitty"
-        "$mod, D,exec, $menu --show drun"
+        "$mod, D,exec, $menu -show drun"
         "$mod, F, fullscreen,"
         "$mod, Q, killactive, "
         "$mod, N, exec, thunar"
-        "$mod, W, exec, librewolf"
-        "$mod, V, togglefloating, "
+        "$mod, W, exec, nvidia-offload librewolf"
+        "$mod SHIFT, V, togglefloating, "
+        "SUPER, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mod, P, pseudo, # dwindle"
         "$mod, J, togglesplit, # dwindle"
         "$mod SHIFT, L, exec, loginctl lock-session"
         "$mod, S, exec, spotify"
-        "$mod, T, exec, thunderbird"
+        "$mod, T, exec, nvidia-offload thunderbird"
         "$mod, escape, exec, wlogout"
 
         "$mod, H, movefocus, l"
@@ -87,7 +117,8 @@
         "$mod SHIFT, Ccedilla, movetoworkspace, 9"
         "$mod SHIFT, Agrave, movetoworkspace, 10"
 
-        ''$mod , print, exec, grimblast save area - | swappy -f -''
+        ''$mod , print, exec, grimblast save area - | satty -f -''
+        ''$mod SHIFT, print, exec, grimblast save active screen - | satty -f -''
       ];
       bindm = [
         "$mod, mouse:272, movewindow"
@@ -110,7 +141,14 @@
         kb_layout = "fr";
       };
 
-      windowrulev2 = [ "float, class:^(xdg-desktop-portal)" ];
+      windowrulev2 = [
+        "float, class:^(xdg-desktop-portal)"
+        "idleinhibit, class:(steam_app)"
+        "float, class:^(satty)$"
+        "float, title:^(Extension: (Bitwarden - Free Password Manager) - Bitwarden — Mozilla Firefox)$"
+        "opacity 0.9 override 0.8 override 0.95 override,class:^(kitty)$"
+      ];
+      layerrule = [ "blur, top-bar" ];
     };
   };
 
@@ -121,9 +159,9 @@
       ipc = "on";
       splash = true;
       splash_offset = 2.0;
-      preload = [ "/home/ciflire/nixFlake/home/hyprland/wallpapers/landscapes/forest.png" ];
+      preload = [ "/home/ciflire/nixFlake/home/hyprland/wallpapers/landscapes/forrest.png" ];
 
-      wallpaper = [ ",/home/ciflire/nixFlake/home/hyprland/wallpapers/landscapes/forest.png" ];
+      wallpaper = [ ",/home/ciflire/nixFlake/home/hyprland/wallpapers/landscapes/forrest.png" ];
 
     };
   };
@@ -171,9 +209,12 @@
         hide_cursor = true;
       };
       background = {
-        path = "/home/ciflire/nixFlake/home/hyprland/catppuccin_triangle.png";
+        path = "/home/ciflire/nixFlake/home/hyprland/wallpapers/landscapes/forrest.png";
         blur_passes = 3;
         blur_size = 8;
+      };
+      cursor = {
+        no_hardware_cursors = true;
       };
       input-field = {
         size = "200, 50";
@@ -191,8 +232,15 @@
     };
   };
 
+  programs.rofi = {
+    enable = true;
+    font = lib.mkForce "MonoLisa 10";
+    location = "center";
+    package = pkgs.rofi-wayland;
+    terminal = "kitty";
+  };
+
   home.packages = with pkgs; [
-    wofi
     inputs.ags.packages.${pkgs.system}.ags
     brightnessctl
     killall
@@ -216,7 +264,7 @@
 
     # screenshots
     grimblast
-    swappy
+    satty
 
     nvidia-vaapi-driver
 
@@ -226,5 +274,7 @@
     osu-lazer-bin
 
     qt5ct
+
+    walker
   ];
 }

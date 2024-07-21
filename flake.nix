@@ -10,6 +10,8 @@
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     stylix.url = "github:danth/stylix";
+    # stylix.url = "github:ciflire/stylix";
+    helix.url = "github:helix-editor/helix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -30,6 +32,8 @@
     hyprpaper.url = "github:hyprwm/hyprpaper";
 
     steam-tui.url = "github:dmadisetti/steam-tui";
+
+    walker.url = "github:abenz1267/walker";
   };
 
   outputs =
@@ -48,6 +52,7 @@
           ./core/configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.stylix.nixosModules.stylix
+          inputs.walker.homeManagerModules.walker
         ];
       };
     };

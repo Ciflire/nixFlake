@@ -1,23 +1,73 @@
-{ lib, pkgs, ... }:
 {
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  stylix.targets.helix.enable = true;
   programs.helix = {
+    package = inputs.helix.packages.${pkgs.system}.helix;
     enable = true;
-    languages.language = [
-      {
-        name = "nix";
-        auto-format = true;
-        formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
-      }
-      {
-        name = "typst";
-        auto-format = true;
-        formatter.command = "${pkgs.typstyle}/bin/typstyle";
-      }
-    ];
+    languages = {
+      language-server = {
+        tinymist = {
+          command = "${pkgs.tinymist}/bin/tinymist/";
+        };
+        typst-lsp = {
+          command = "${pkgs.typst-lsp}/bin/typst-lsp";
+        };
+      };
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+        }
+        {
+          name = "typst";
+
+          scope = "source.typst";
+          injection-regex = "typ(st)?";
+          file-types = [
+            "typst"
+            "typ"
+          ];
+          comment-token = "//";
+          block-comment-tokens = {
+            start = "/*";
+            end = "*/";
+          };
+          language-servers = [
+            "typst-lsp"
+            "tinymist"
+          ];
+          indent = {
+            tab-width = 2;
+            unit = "  ";
+          };
+          auto-format = true;
+          formatter.command = "${pkgs.typstyle}/bin/typstyle";
+        }
+        {
+          name = "markdown";
+          auto-format = true;
+          formatter.command = "${pkgs.deno}/bin/deno";
+          formatter.args = [
+            "fmt"
+            "-"
+          ];
+        }
+      ];
+    };
     settings = lib.mkForce {
-      theme = "stylix";
+      theme = "test";
 
       editor = {
+        lsp = {
+          display-inlay-hints = true;
+        };
+
         line-number = "relative";
         mouse = true;
         cursorline = true;

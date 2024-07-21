@@ -7,12 +7,11 @@
 {
 
   # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true; # For 32 bit applications
+  };
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -22,10 +21,10 @@
     modesetting.enable = true;
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    powerManagement.enable = false;
+    powerManagement.enable = true;
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
+    powerManagement.finegrained = true;
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
@@ -40,13 +39,25 @@
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
   hardware.nvidia.prime = {
-    sync.enable = true;
-    # Make sure to use the correct Bus ID values for your system!
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
     amdgpuBusId = "PCI:6:0:0";
     nvidiaBusId = "PCI:1:0:0";
   };
+
+  environment.systemPackages = with pkgs; [
+    nvidia-vaapi-driver
+    nvtopPackages.full
+    egl-wayland
+    libva-utils
+    #gaming
+    mangohud
+    libsForQt5.qt5.qtwayland
+  ];
+
 }

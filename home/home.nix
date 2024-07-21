@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   ...
@@ -17,6 +18,7 @@
     ./kitty
     ./qt
     ./starship
+    ./walker
     ./wlogout
     ./zellij
     ./zsh
@@ -110,13 +112,17 @@
   home.sessionVariables = {
     EDITOR = "hx";
     LIBVA_DRIVER_NAME = "nvidia";
+    NVD_BACKEND = "direct";
     XDG_SESSION_TYPE = "wayland";
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     WLR_NO_HARDWARE_CURSORS = 1;
+    MOZ_DISABLE_RDD_SANDBOX = 1;
+    QT_QPA_PLATFORMTHEME = lib.mkForce "qt5ct";
     # MOZ_ENABLE_WAYLAND = 1;
   };
 
+  systemd.user.sessionVariables.QT_QPA_PLATFORMTHEME = lib.mkForce "qt5ct";
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
