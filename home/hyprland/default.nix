@@ -9,7 +9,7 @@
     enable = true;
     configPackages = [ inputs.hyprland.packages.${pkgs.system}.hyprland ];
     extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
+      inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
     ];
@@ -57,12 +57,13 @@
         gaps_out = 7;
       };
       "$mod" = "SUPER";
-      "$menu" = "rofi";
+      "$menu" = "walker";
       "exec-once" = [
         "ags &"
         "/nix/store/$(ls -la /nix/store | grep 'mate-polkit' | grep '4096' | awk '{print $9}' | sed -n '$p')/libexec/polkit-mate-authentication-agent-1 & "
         "wl-paste --type text --watch cliphist store #Stores only text data&"
         "wl-paste --type image --watch cliphist store #Stores only image data &"
+        "rog-control-center &"
       ];
       source = [
         "./monitors.conf"
@@ -76,11 +77,12 @@
       debug.disable_logs = false;
       bind = [
         "$mod, Return, exec,kitty"
-        "$mod, D,exec, $menu -show drun"
+        "$mod, D,exec, $menu --modules applications"
         "$mod, F, fullscreen,"
         "$mod, Q, killactive, "
         "$mod, N, exec, thunar"
-        "$mod, W, exec, nvidia-offload librewolf"
+        "$mod, W, exec, $menu --modules hyprland"
+        "$mod, B, exec, nvidia-offload librewolf"
         "$mod SHIFT, V, togglefloating, "
         "SUPER, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mod, P, pseudo, # dwindle"
@@ -275,6 +277,5 @@
 
     qt5ct
 
-    walker
   ];
 }

@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.walker = {
     enable = true;
@@ -6,13 +6,23 @@
 
     # All options from the config.json can be used here.
     config = {
-      search.placeholder = "Search";
-      fullscreen = true;
+      ui = {
+        fullscreen = true;
+        width = 800;
+        anchors = {
+          top = true;
+          bottom = true;
+        };
+      };
       list = {
-        height = 200;
+        height = 500;
       };
       websearch.prefix = "?";
       switcher.prefix = "/";
+      search = {
+        placeholder = "Search";
+
+      };
     };
 
   };

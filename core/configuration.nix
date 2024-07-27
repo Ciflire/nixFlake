@@ -23,6 +23,11 @@
   boot.loader.timeout = 20;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  nix.settings = {
+    substituters = [ "https://walker.cachix.org" ];
+    trusted-public-keys = [ "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM=" ];
+  };
+
   # Environment variables
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -30,11 +35,9 @@
     XDG_SESSION_TYPE = "wayland";
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    WLR_NO_HARDWARE_CURSORS = "1";
     WLR_DRM_DEVICES = "$HOME/.config/hypr/amdgpu:$HOME/.config/hypr/nvidia";
     MOZ_ENABLE_WAYLAND = "1";
     SDL_VIDEODRIVER = "wayland,x11";
-    # WLR_RENDERER = "vulkan";
   };
 
   # Hostname
@@ -72,6 +75,7 @@
   # Enable the KDE Plasma Desktop Environment.
 
   services.asusd.enable = true;
+  services.asusd.enableUserService = true;
 
   # Configure console keymap
   console.keyMap = "fr";
@@ -163,7 +167,6 @@
       zathura
       mongodb-compass
       qFlipper
-      asusctl
       direnv
       pre-commit
       libreoffice-qt
@@ -218,7 +221,7 @@
     "nix-command"
     "flakes"
   ];
-
+  programs.sway.enable = true;
   security.pam.services.swaylock.text = "auth include login";
 
   security.polkit.enable = true;

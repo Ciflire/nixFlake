@@ -8,6 +8,7 @@
 
 {
   imports = [
+    inputs.walker.homeManagerModules.walker
     # ./ags
     ./lf
     # ./nixvim
@@ -116,7 +117,6 @@
     XDG_SESSION_TYPE = "wayland";
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    WLR_NO_HARDWARE_CURSORS = 1;
     MOZ_DISABLE_RDD_SANDBOX = 1;
     QT_QPA_PLATFORMTHEME = lib.mkForce "qt5ct";
     # MOZ_ENABLE_WAYLAND = 1;
