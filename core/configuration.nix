@@ -116,6 +116,8 @@
       "gamemode"
     ];
     packages = with pkgs; [
+      (callPackage ../packages/hyneview.nix { })
+
       # Archive managers
       zip
       p7zip
