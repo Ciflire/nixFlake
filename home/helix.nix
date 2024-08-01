@@ -67,7 +67,10 @@
         lsp = {
           display-inlay-hints = true;
         };
-
+        inline-diagnostics = {
+          cursor-line = "hint";
+          other-lines = "error";
+        };
         line-number = "relative";
         mouse = true;
         cursorline = true;
@@ -102,9 +105,6 @@
           mode.insert = "INSERT";
           mode.select = "SELECT";
         };
-        # lsp = {
-        #   display-inlay-hints = true;
-        # };
         file-picker = {
           hidden = false;
           git-ignore = true;

@@ -39,7 +39,7 @@
     "nvidia_drm.modeset=1"
   ];
   boot.extraModprobeConfig = ''
-    option nvidia NVreg_EnableGpuFirmware=0
+    options nvidia NVreg_EnableGpuFirmware=0
   '';
 
   fileSystems."/" = {
