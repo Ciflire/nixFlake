@@ -4,10 +4,13 @@
   lib,
   ...
 }:
+let
+  hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+in
 {
   xdg.portal = {
     enable = true;
-    configPackages = [ inputs.hyprland.packages.${pkgs.system}.hyprland ];
+    configPackages = [ hyprland ];
     extraPortals = with pkgs; [
       inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
       xdg-desktop-portal-wlr
@@ -16,7 +19,7 @@
   };
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    package = hyprland;
     xwayland.enable = true;
     settings = {
       animation = [
@@ -97,27 +100,27 @@
         "$mod, J, movefocus, u"
         "$mod, K, movefocus, d"
 
-        "$mod, Ampersand, workspace, 1"
-        "$mod, Eacute, workspace, 2"
-        "$mod, Quotedbl, workspace, 3"
-        "$mod, Apostrophe, workspace, 4"
-        "$mod, Parenleft, workspace, 5"
-        "$mod, Minus, workspace, 6"
-        "$mod, Egrave, workspace, 7"
-        "$mod, Underscore, workspace, 8"
-        "$mod, Ccedilla, workspace, 9"
-        "$mod, Agrave, workspace, 10"
+        "$mod, ampersand, workspace, 1"
+        "$mod, eacute, workspace, 2"
+        "$mod, quootedbl, workspace, 3"
+        "$mod, apostrophe, workspace, 4"
+        "$mod, parenleft, workspace, 5"
+        "$mod, minus, workspace, 6"
+        "$mod, egrave, workspace, 7"
+        "$mod, underscore, workspace, 8"
+        "$mod, ccedilla, workspace, 9"
+        "$mod, agrave, workspace, 10"
 
-        "$mod SHIFT, Ampersand, movetoworkspace, 1"
-        "$mod SHIFT, Eacute, movetoworkspace, 2"
-        "$mod SHIFT, Quotedbl, movetoworkspace, 3"
-        "$mod SHIFT, Apostrophe, movetoworkspace, 4"
-        "$mod SHIFT, Parenleft, movetoworkspace, 5"
-        "$mod SHIFT, Minus, movetoworkspace, 6"
-        "$mod SHIFT, Egrave, movetoworkspace, 7"
-        "$mod SHIFT, Underscore, movetoworkspace, 8"
-        "$mod SHIFT, Ccedilla, movetoworkspace, 9"
-        "$mod SHIFT, Agrave, movetoworkspace, 10"
+        "$mod SHIFT, ampersand, workspace, 1"
+        "$mod SHIFT, eacute, workspace, 2"
+        "$mod SHIFT, quootedbl, workspace, 3"
+        "$mod SHIFT, apostrophe, workspace, 4"
+        "$mod SHIFT, parenleft, workspace, 5"
+        "$mod SHIFT, minus, workspace, 6"
+        "$mod SHIFT, egrave, workspace, 7"
+        "$mod SHIFT, underscore, workspace, 8"
+        "$mod SHIFT, ccedilla, workspace, 9"
+        "$mod SHIFT, agrave, workspace, 10"
 
         ''$mod , print, exec, grimblast save area - | satty -f -''
         ''$mod SHIFT, print, exec, grimblast save active screen - | satty -f -''
@@ -138,6 +141,9 @@
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       ];
+      cursor = {
+        no_hardware_cursors = true;
+      };
 
       input = {
         kb_layout = "fr";
@@ -174,9 +180,7 @@
       general = {
         lock_cmd = "pidof hyprlock || ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock";
         before_sleep_cmd = "loginctl lock-session";
-        after_sleep_cmd = "${
-          inputs.hyprland.packages.${pkgs.system}.hyprland
-        }/bin/hyprctl dispatch dpms on";
+        after_sleep_cmd = "${hyprland}/bin/hyprctl dispatch dpms on";
       };
       listener = [
         {
@@ -190,8 +194,8 @@
         }
         {
           timeout = 120;
-          on-timeout = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms off";
-          on-resume = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/hyprctl dispatch dpms on";
+          on-timeout = "${hyprland}/bin/hyprctl dispatch dpms off";
+          on-resume = "${hyprland}/bin/hyprctl dispatch dpms on";
         }
         {
           timeout = 1800;
@@ -214,9 +218,6 @@
         path = "/home/ciflire/nixFlake/home/hyprland/wallpapers/landscapes/forrest.png";
         blur_passes = 3;
         blur_size = 8;
-      };
-      cursor = {
-        no_hardware_cursors = true;
       };
       input-field = {
         size = "200, 50";

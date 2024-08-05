@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   inputs,
@@ -9,20 +8,17 @@
 {
   imports = [
     inputs.walker.homeManagerModules.walker
-    # ./ags
-    ./lf
-    # ./nixvim
-    ./git
-    ./gtk
-    ./helix
+    ./git.nix
+    ./gtk.nix
+    ./helix.nix
     ./hyprland
-    ./kitty
-    ./qt
-    ./starship
-    ./walker
+    ./kitty.nix
+    ./qt.nix
+    ./starship.nix
+    ./walker.nix
     ./wlogout
-    ./zellij
-    ./zsh
+    ./zellij.nix
+    ./zsh.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.

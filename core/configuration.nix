@@ -34,6 +34,12 @@
     ];
   };
 
+  services.udev.extraRules = ''
+    # Keymapp Flashing rules for the Voyager
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
+
+  '';
+
   # Environment variables
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -120,6 +126,7 @@
       "libvirtd"
       "video"
       "gamemode"
+      "plugdev"
     ];
     packages = with pkgs; [
       (callPackage ../packages/hyneview.nix { })
@@ -198,6 +205,7 @@
       inputs.steam-tui.packages.${pkgs.system}.steam-tui
       librewolf
       appimage-run
+      keymapp
     ];
   };
 

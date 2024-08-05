@@ -1,0 +1,32 @@
+diff --git a/src/desktop/LayerSurface.cpp b/src/desktop/LayerSurface.cpp
+index ba1b1776..8fd448ef 100644
+--- a/src/desktop/LayerSurface.cpp
++++ b/src/desktop/LayerSurface.cpp
+@@ -111,6 +111,11 @@ void CLayerSurface::onDestroy() {
+     layerSurface.reset();
+     if (surface)
+         surface->unassign();
++
++    listeners.unmap.reset();
++    listeners.destroy.reset();
++    listeners.map.reset();
++    listeners.commit.reset();
+ }
+ 
+ void CLayerSurface::onMap() {
+diff --git a/src/events/Windows.cpp b/src/events/Windows.cpp
+index f5ae6759..5d29a3b7 100644
+--- a/src/events/Windows.cpp
++++ b/src/events/Windows.cpp
+@@ -790,6 +790,11 @@ void Events::listener_destroyWindow(void* owner, void* data) {
+         Debug::log(LOG, "Unmapped {} removed instantly", PWINDOW);
+         g_pCompositor->removeWindowFromVectorSafe(PWINDOW); // most likely X11 unmanaged or sumn
+     }
++
++    PWINDOW->listeners.unmap.reset();
++    PWINDOW->listeners.destroy.reset();
++    PWINDOW->listeners.map.reset();
++    PWINDOW->listeners.commit.reset();
+ }
+ 
+ void Events::listener_setTitleWindow(void* owner, void* data) {
