@@ -5,6 +5,11 @@
 
     ags.url = "github:Aylur/ags";
 
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
@@ -33,7 +38,6 @@
 
     steam-tui.url = "github:dmadisetti/steam-tui";
 
-    walker.url = "github:abenz1267/walker";
   };
 
   outputs =

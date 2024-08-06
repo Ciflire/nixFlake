@@ -60,7 +60,7 @@ in
         gaps_out = 7;
       };
       "$mod" = "SUPER";
-      "$menu" = "walker";
+      "$menu" = "anyrun";
       "exec-once" = [
         "ags &"
         "/nix/store/$(ls -la /nix/store | grep 'mate-polkit' | grep '4096' | awk '{print $9}' | sed -n '$p')/libexec/polkit-mate-authentication-agent-1 & "
@@ -80,11 +80,11 @@ in
       debug.disable_logs = false;
       bind = [
         "$mod, Return, exec,kitty"
-        "$mod, D,exec, $menu --modules applications"
+        "$mod, D,exec, $menu"
         "$mod, F, fullscreen,"
         "$mod, Q, killactive, "
         "$mod, N, exec, thunar"
-        "$mod, W, exec, $menu --modules hyprland"
+        "$mod, W, exec, $menu"
         "$mod, B, exec, nvidia-offload librewolf"
         "$mod SHIFT, V, togglefloating, "
         "SUPER, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
@@ -102,7 +102,7 @@ in
 
         "$mod, ampersand, workspace, 1"
         "$mod, eacute, workspace, 2"
-        "$mod, quootedbl, workspace, 3"
+        "$mod, quotedbl, workspace, 3"
         "$mod, apostrophe, workspace, 4"
         "$mod, parenleft, workspace, 5"
         "$mod, minus, workspace, 6"
