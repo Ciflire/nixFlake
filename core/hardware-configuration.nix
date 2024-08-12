@@ -19,28 +19,10 @@
     "usb_storage"
     "sd_mod"
   ];
-  # boot.blacklistedKernelModules =
-  #   [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
-  boot.initrd.kernelModules = [
-    "nvidia"
-    "nvidia_modeset"
-    "nvidia_uvm"
-    "nvidia_drm"
-  ];
-  # boot.initrd.kernelModules = [ "nouveau" ];
-  boot.blacklistedKernelModules = [ "nouveau" ];
   boot.kernelModules = [
     "kvm-amd"
     "plfxlc"
   ];
-  boot.extraModulePackages = [ ];
-  boot.kernelParams = [
-    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-    "nvidia_drm.modeset=1"
-  ];
-  # boot.extraModprobeConfig = ''
-  #   options nvidia NVreg_EnableGpuFirmware=0
-  # '';
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5827e49a-bc2e-4271-8b2c-c1d558c0dc63";

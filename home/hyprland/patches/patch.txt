@@ -1,32 +1,42 @@
-diff --git a/src/desktop/LayerSurface.cpp b/src/desktop/LayerSurface.cpp
-index ba1b1776..8fd448ef 100644
---- a/src/desktop/LayerSurface.cpp
-+++ b/src/desktop/LayerSurface.cpp
-@@ -111,6 +111,11 @@ void CLayerSurface::onDestroy() {
-     layerSurface.reset();
-     if (surface)
-         surface->unassign();
-+
-+    listeners.unmap.reset();
-+    listeners.destroy.reset();
-+    listeners.map.reset();
-+    listeners.commit.reset();
- }
+diff --git a/src/protocols/DRMSyncobj.cpp b/src/protocols/DRMSyncobj.cpp
+index 37e6d0f1..9a48b99a 100644
+--- a/src/protocols/DRMSyncobj.cpp
++++ b/src/protocols/DRMSyncobj.cpp
+@@ -75,7 +75,7 @@ CDRMSyncobjSurfaceResource::CDRMSyncobjSurfaceResource(SP<CWpLinuxDrmSyncobjSurf
+         pending.acquireTimeline->timeline->addWaiter([this]() { surface->unlockPendingState(); }, pending.acquirePoint, DRM_SYNCOBJ_WAIT_FLAGS_WAIT_AVAILABLE);
+     });
  
- void CLayerSurface::onMap() {
-diff --git a/src/events/Windows.cpp b/src/events/Windows.cpp
-index f5ae6759..5d29a3b7 100644
---- a/src/events/Windows.cpp
-+++ b/src/events/Windows.cpp
-@@ -790,6 +790,11 @@ void Events::listener_destroyWindow(void* owner, void* data) {
-         Debug::log(LOG, "Unmapped {} removed instantly", PWINDOW);
-         g_pCompositor->removeWindowFromVectorSafe(PWINDOW); // most likely X11 unmanaged or sumn
-     }
-+
-+    PWINDOW->listeners.unmap.reset();
-+    PWINDOW->listeners.destroy.reset();
-+    PWINDOW->listeners.map.reset();
-+    PWINDOW->listeners.commit.reset();
- }
+-    listeners.surfaceCommit = surface->events.commit.registerListener([this](std::any d) {
++    listeners.surfaceCommit = surface->events.roleCommit.registerListener([this](std::any d) {
+         // apply timelines if new ones have been attached, otherwise don't touch
+         // the current ones
+         if (pending.releaseTimeline) {
+diff --git a/src/protocols/core/Compositor.cpp b/src/protocols/core/Compositor.cpp
+index 656433d3..a767dd52 100644
+--- a/src/protocols/core/Compositor.cpp
++++ b/src/protocols/core/Compositor.cpp
+@@ -432,6 +432,8 @@ void CWLSurfaceResource::commitPendingState() {
+     pending.bufferDamage.clear();
+     pending.newBuffer = false;
  
- void Events::listener_setTitleWindow(void* owner, void* data) {
++    events.roleCommit.emit();
++
+     if (syncobj && syncobj->current.releaseTimeline && syncobj->current.releaseTimeline->timeline && current.buffer && current.buffer->buffer)
+         current.buffer->releaser = makeShared<CSyncReleaser>(syncobj->current.releaseTimeline->timeline, syncobj->current.releasePoint);
+ 
+diff --git a/src/protocols/core/Compositor.hpp b/src/protocols/core/Compositor.hpp
+index af0dfa58..a3245399 100644
+--- a/src/protocols/core/Compositor.hpp
++++ b/src/protocols/core/Compositor.hpp
+@@ -75,8 +75,9 @@ class CWLSurfaceResource {
+     Vector2D                      sourceSize();
+ 
+     struct {
+-        CSignal precommit;
+-        CSignal commit;
++        CSignal precommit;  // before commit
++        CSignal roleCommit; // commit for role objects, before regular commit
++        CSignal commit;     // after commit
+         CSignal map;
+         CSignal unmap;
+         CSignal newSubsurface;

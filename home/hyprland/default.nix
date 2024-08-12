@@ -7,6 +7,9 @@
 let
   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
 in
+# hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland.overrideAttrs (old: {
+#   patches = [ ./patches/patch.txt ];
+# });
 {
   xdg.portal = {
     enable = true;
@@ -60,7 +63,7 @@ in
         gaps_out = 7;
       };
       "$mod" = "SUPER";
-      "$menu" = "anyrun";
+      "$menu" = "walker";
       "exec-once" = [
         "ags &"
         "/nix/store/$(ls -la /nix/store | grep 'mate-polkit' | grep '4096' | awk '{print $9}' | sed -n '$p')/libexec/polkit-mate-authentication-agent-1 & "
@@ -178,7 +181,9 @@ in
     package = inputs.hypridle.packages.${pkgs.system}.hypridle;
     settings = {
       general = {
-        lock_cmd = "pidof hyprlock || ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock";
+        lock_cmd = "pidof hyprlock || nvidia-offload ${
+          inputs.hyprlock.packages.${pkgs.system}.hyprlock
+        }/bin/hyprlock";
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "${hyprland}/bin/hyprctl dispatch dpms on";
       };

@@ -51,7 +51,8 @@
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     WLR_DRM_DEVICES = "$HOME/.config/hypr/amdgpu:$HOME/.config/hypr/nvidia";
     MOZ_ENABLE_WAYLAND = "1";
-    SDL_VIDEODRIVER = "wayland,x11";
+    SDL_VIDEODRIVER = "wayland,x11,windows";
+    EGL_PLATFORM = "wayland";
   };
 
   # Hostname
@@ -132,7 +133,7 @@
     ];
     packages = with pkgs; [
       (callPackage ../packages/hyneview.nix { })
-      (callPackage ../packages/thorium.nix { })
+      # (callPackage ../packages/thorium.nix { })
 
       # Archive managers
       zip

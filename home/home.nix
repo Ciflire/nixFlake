@@ -7,9 +7,8 @@
 
 {
   imports = [
-    inputs.anyrun.homeManagerModules.default
+    inputs.walker.homeManagerModules.default
 
-    ./anyrun.nix
     ./git.nix
     ./gtk.nix
     ./helix.nix
@@ -17,6 +16,7 @@
     ./kitty.nix
     ./qt.nix
     ./starship.nix
+    ./walker.nix
     ./wlogout
     ./zellij.nix
     ./zsh.nix

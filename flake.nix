@@ -38,6 +38,8 @@
 
     steam-tui.url = "github:dmadisetti/steam-tui";
 
+    walker.url = "github:abenz1267/walker";
+
   };
 
   outputs =
