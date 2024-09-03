@@ -49,6 +49,7 @@
     XDG_SESSION_TYPE = "wayland";
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    # AQ_DRM_DEVICES = "$HOME/.config/hypr/amdgpu:$HOME/.config/hypr/nvidia";
     WLR_DRM_DEVICES = "$HOME/.config/hypr/amdgpu:$HOME/.config/hypr/nvidia";
     MOZ_ENABLE_WAYLAND = "1";
     SDL_VIDEODRIVER = "wayland,x11,windows";
@@ -100,6 +101,7 @@
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
+  hardware.pulseaudio.support32Bit = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -133,7 +135,7 @@
     ];
     packages = with pkgs; [
       (callPackage ../packages/hyneview.nix { })
-      # (callPackage ../packages/thorium.nix { })
+      (callPackage ../packages/thorium.nix { })
 
       # Archive managers
       zip
@@ -183,8 +185,8 @@
         );
       })
       wl-clipboard
-      zathura
       mongodb-compass
+      sioyek
       qFlipper
       direnv
       pre-commit
@@ -202,12 +204,11 @@
       nil
       pulsemixer
       pwvucontrol
-      element-desktop
       fastfetch
       qpwgraph
       qemu
       inputs.steam-tui.packages.${pkgs.system}.steam-tui
-      librewolf
+      # librewolf
       appimage-run
       keymapp
     ];

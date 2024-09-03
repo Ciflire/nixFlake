@@ -13,7 +13,10 @@
     enable32Bit = true; # For 32 bit applications
   };
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [
+    "nvidia"
+    "amd"
+  ];
 
   hardware.nvidia = {
 
@@ -41,7 +44,7 @@
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
   hardware.nvidia.prime = {
     offload = {

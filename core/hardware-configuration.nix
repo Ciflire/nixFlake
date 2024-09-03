@@ -19,9 +19,8 @@
     "usb_storage"
     "sd_mod"
   ];
-  boot.kernelModules = [
-    "kvm-amd"
-    "plfxlc"
+  boot.initrd.kernelModules = [
+    "amdgpu"
   ];
 
   fileSystems."/" = {

@@ -51,11 +51,11 @@
 }:
 stdenv.mkDerivation rec {
   pname = "thorium-browser";
-  version = "124.0.6367.218";
+  version = "126.0.6478.231";
 
   src = fetchurl {
     url = "https://github.com/Alex313031/thorium/releases/download/M${version}/thorium-browser_${version}_AVX.deb";
-    hash = "sha256-Q3XJyaCWbKMwbqfytFX1+2AknOtWvtcUrxFpb+oE9Yc=";
+    hash = "sha256-qiLFjMpauK3DdyabsioWQMpvNJjsjeJVymgcLeKS7D0=";
   };
 
   nativeBuildInputs = [
@@ -150,7 +150,7 @@ stdenv.mkDerivation rec {
     substituteInPlace $out/opt/chromium.org/thorium/thorium-browser \
       --replace 'export LD_LIBRARY_PATH' "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:${lib.makeLibraryPath buildInputs}:$out/chromium.org/thorium:$out/chromium.org/thorium/lib"
     makeWrapper "$out/opt/chromium.org/thorium/thorium-browser" "$out/bin/thorium-browser" \
-      --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
+      --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=wayland --enable-features=WaylandWindowDecorations}}"
     runHook postInstall
   '';
 

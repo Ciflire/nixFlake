@@ -6,6 +6,7 @@
 }:
 let
   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  quickshell = inputs.quickshell.packages.${pkgs.system}.default;
 in
 # hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland.overrideAttrs (old: {
 #   patches = [ ./patches/patch.txt ];
@@ -114,16 +115,16 @@ in
         "$mod, ccedilla, workspace, 9"
         "$mod, agrave, workspace, 10"
 
-        "$mod SHIFT, ampersand, workspace, 1"
-        "$mod SHIFT, eacute, workspace, 2"
-        "$mod SHIFT, quootedbl, workspace, 3"
-        "$mod SHIFT, apostrophe, workspace, 4"
-        "$mod SHIFT, parenleft, workspace, 5"
-        "$mod SHIFT, minus, workspace, 6"
-        "$mod SHIFT, egrave, workspace, 7"
-        "$mod SHIFT, underscore, workspace, 8"
-        "$mod SHIFT, ccedilla, workspace, 9"
-        "$mod SHIFT, agrave, workspace, 10"
+        "$mod SHIFT, ampersand, movetoworkspace, 1"
+        "$mod SHIFT, eacute, movetoworkspace, 2"
+        "$mod SHIFT, quootedbl, movetoworkspace, 3"
+        "$mod SHIFT, apostrophe, movetoworkspace, 4"
+        "$mod SHIFT, parenleft, movetoworkspace, 5"
+        "$mod SHIFT, minus, movetoworkspace, 6"
+        "$mod SHIFT, egrave, movetoworkspace, 7"
+        "$mod SHIFT, underscore, movetoworkspace, 8"
+        "$mod SHIFT, ccedilla, movetoworkspace, 9"
+        "$mod SHIFT, agrave, movetoworkspace, 10"
 
         ''$mod , print, exec, grimblast save area - | satty -f -''
         ''$mod SHIFT, print, exec, grimblast save active screen - | satty -f -''
@@ -143,6 +144,10 @@ in
 
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_SINK@ toggle"
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioNext, exec, playerctl next"
+        ", XF86AudioPrev, exec, playerctl prev"
       ];
       cursor = {
         no_hardware_cursors = true;
@@ -283,5 +288,8 @@ in
 
     qt5ct
 
+    quickshell
+
+    playerctl
   ];
 }

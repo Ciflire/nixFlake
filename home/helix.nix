@@ -14,9 +14,9 @@
         tinymist = {
           command = "${pkgs.tinymist}/bin/tinymist/";
         };
-        typst-lsp = {
-          command = "${pkgs.typst-lsp}/bin/typst-lsp";
-        };
+        # typst-lsp = {
+        #   command = "${pkgs.typst-lsp}/bin/typst-lsp";
+        # };
       };
       language = [
         {

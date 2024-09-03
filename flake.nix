@@ -5,6 +5,10 @@
 
     ags.url = "github:Aylur/ags";
 
+    aquamarine = {
+      url = "github:hyprwm/aquamarine";
+    };
+
     anyrun = {
       url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +29,10 @@
 
     hyprlock.url = "github:hyprwm/Hyprlock";
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      # inputs.aquamarine.follows = "aquamarine";
+    };
 
     hyprland-plugins = {
       url = "github:hyprwm/contrib";
@@ -35,6 +42,8 @@
     hypridle.url = "github:hyprwm/hypridle";
 
     hyprpaper.url = "github:hyprwm/hyprpaper";
+
+    quickshell.url = "github:outfoxxed/quickshell";
 
     steam-tui.url = "github:dmadisetti/steam-tui";
 
