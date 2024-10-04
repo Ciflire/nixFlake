@@ -24,8 +24,7 @@
       vpn = "sudo openconnect -u vesse1u@etu --authgroup='Universite-de-Lorraine' vpn.univ-lorraine.fr";
       # hyneview = "env QT_QPA_PLATFORM=xcb ${pkgs.hyneview}/bin/hyneview";
       upgrade = "sudo nixos-rebuild switch --flake /home/ciflire/nixFlake#default";
-      update = "sudo nix flake update /home/ciflire/nixFlake";
-      osu = "nvidia-offload osu\!";
+      update = "sudo nix flake update --flake /home/ciflire/nixFlake";
     };
 
     initExtra = ''

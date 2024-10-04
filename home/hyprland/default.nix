@@ -66,7 +66,7 @@ in
       "$mod" = "SUPER";
       "$menu" = "walker";
       "exec-once" = [
-        "ags &"
+        "hyprpanel &"
         "/nix/store/$(ls -la /nix/store | grep 'mate-polkit' | grep '4096' | awk '{print $9}' | sed -n '$p')/libexec/polkit-mate-authentication-agent-1 & "
         "wl-paste --type text --watch cliphist store #Stores only text data&"
         "wl-paste --type image --watch cliphist store #Stores only image data &"
@@ -87,16 +87,16 @@ in
         "$mod, D,exec, $menu"
         "$mod, F, fullscreen,"
         "$mod, Q, killactive, "
-        "$mod, N, exec, thunar"
+        "$mod, E, exec, thunar"
         "$mod, W, exec, $menu"
-        "$mod, B, exec, nvidia-offload librewolf"
+        "$mod, B, exec, librewolf"
         "$mod SHIFT, V, togglefloating, "
         "SUPER, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
-        "$mod, P, pseudo, # dwindle"
-        "$mod, J, togglesplit, # dwindle"
+        # "$mod, P, cycleprev"
+        # "$mod, J, cyclenext"
         "$mod SHIFT, L, exec, loginctl lock-session"
         "$mod, S, exec, spotify"
-        "$mod, T, exec, nvidia-offload thunderbird"
+        "$mod, T, exec, thunderbird"
         "$mod, escape, exec, wlogout"
 
         "$mod, H, movefocus, l"
@@ -117,7 +117,7 @@ in
 
         "$mod SHIFT, ampersand, movetoworkspace, 1"
         "$mod SHIFT, eacute, movetoworkspace, 2"
-        "$mod SHIFT, quootedbl, movetoworkspace, 3"
+        "$mod SHIFT, quotedbl, movetoworkspace, 3"
         "$mod SHIFT, apostrophe, movetoworkspace, 4"
         "$mod SHIFT, parenleft, movetoworkspace, 5"
         "$mod SHIFT, minus, movetoworkspace, 6"
@@ -186,9 +186,7 @@ in
     package = inputs.hypridle.packages.${pkgs.system}.hypridle;
     settings = {
       general = {
-        lock_cmd = "pidof hyprlock || nvidia-offload ${
-          inputs.hyprlock.packages.${pkgs.system}.hyprlock
-        }/bin/hyprlock";
+        lock_cmd = "pidof hyprlock || ${inputs.hyprlock.packages.${pkgs.system}.hyprlock}/bin/hyprlock";
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "${hyprland}/bin/hyprctl dispatch dpms on";
       };
@@ -254,7 +252,6 @@ in
   };
 
   home.packages = with pkgs; [
-    inputs.ags.packages.${pkgs.system}.ags
     brightnessctl
     killall
     inotify-tools
@@ -279,8 +276,6 @@ in
     grimblast
     satty
 
-    nvidia-vaapi-driver
-
     opentabletdriver
     xournalpp
 
@@ -291,5 +286,8 @@ in
     quickshell
 
     playerctl
+
+    inputs.hyprpanel.packages.${pkgs.system}.default
+    pywal
   ];
 }

@@ -41,7 +41,14 @@
 
     hypridle.url = "github:hyprwm/hypridle";
 
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+
     hyprpaper.url = "github:hyprwm/hyprpaper";
+
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     quickshell.url = "github:outfoxxed/quickshell";
 
@@ -52,13 +59,21 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      lix-module,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = nixpkgs.legacyPackages.${pkgs.system};
     in
     {
 
+      overlays = {
+        hyprpanel = inputs.hyprpanel.packages.${pkgs.system}.default;
+      };
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
@@ -67,6 +82,7 @@
           ./core/configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.stylix.nixosModules.stylix
+          lix-module.nixosModules.default
         ];
       };
     };

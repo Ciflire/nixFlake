@@ -11,12 +11,17 @@
 }:
 
 {
+  nixpkgs.overlays = [
+    inputs.hyprpanel.overlay
+  ];
   imports = [
     inputs.home-manager.nixosModules.default
     ../ricing/stylix.nix
     ./hardware-configuration.nix
-    ../modules/nixos/nvidia.nix
+    ../modules/nixos/amd.nix
+    # ../modules/nixos/nvidia.nix
   ];
+  virtualisation.docker.enable = true;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
@@ -45,15 +50,15 @@
   # Environment variables
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    LIBVA_DRIVER_NAME = "nvidia";
     XDG_SESSION_TYPE = "wayland";
-    GBM_BACKEND = "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    # LIBVA_DRIVER_NAME = "nvidia";
+    # GBM_BACKEND = "nvidia-drm";
+    # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     # AQ_DRM_DEVICES = "$HOME/.config/hypr/amdgpu:$HOME/.config/hypr/nvidia";
-    WLR_DRM_DEVICES = "$HOME/.config/hypr/amdgpu:$HOME/.config/hypr/nvidia";
+    # WLR_DRM_DEVICES = "$HOME/.config/hypr/amdgpu:$HOME/.config/hypr/nvidia";
     MOZ_ENABLE_WAYLAND = "1";
     SDL_VIDEODRIVER = "wayland,x11,windows";
-    EGL_PLATFORM = "wayland";
+    # EGL_PLATFORM = "wayland";
   };
 
   # Hostname
@@ -134,9 +139,11 @@
       "plugdev"
     ];
     packages = with pkgs; [
-      (callPackage ../packages/hyneview.nix { })
-      (callPackage ../packages/thorium.nix { })
+      # (callPackage ../packages/thorium.nix { })
+      tree
+      glow
 
+      librewolf
       # Archive managers
       zip
       p7zip
@@ -211,6 +218,11 @@
       # librewolf
       appimage-run
       keymapp
+      wev
+
+      tlaplusToolbox
+
+      vscode
     ];
   };
 
@@ -232,6 +244,14 @@
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    virt-manager
+    virt-viewer
+    spice
+    spice-gtk
+    spice-protocol
+    win-virtio
+    win-spice
+    gnome.adwaita-icon-theme
   ];
 
   programs.steam.enable = true;
@@ -270,23 +290,21 @@
   services.upower.enable = true;
   services.gvfs.enable = true;
 
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      runAsRoot = true;
-      swtpm.enable = true;
-      ovmf = {
-        enable = true;
-        packages = [
-          (pkgs.OVMF.override {
-            secureBoot = true;
-            tpmSupport = true;
-          }).fd
-        ];
+  programs.dconf.enable = true;
+
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
       };
     };
+    spiceUSBRedirection.enable = true;
   };
+  services.spice-vdagentd.enable = true;
+
   programs.virt-manager.enable = true;
 
   hardware.opentabletdriver.enable = true;

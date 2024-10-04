@@ -1,11 +1,12 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
 
   # Ensure the Nouveau module is loaded
-  boot.kernelModules = [ "nouveau" ];
+  # boot.kernelModules = [ "nouveau" ];
 
   # Blacklist the proprietary NVIDIA driver, if needed
-  boot.blacklistedKernelModules =
-    [ "nvidia" "nvidia_uvm" "nvidia_drm" "nvidia_modeset" ];
+  # boot.blacklistedKernelModules =
+  # [ "nvidia" "nvidia_uvm" "nvidia_drm" "nvidia_modeset" ];
 
   # Configure Xorg to use the Nouveau driver
   services.xserver = {
