@@ -8,7 +8,7 @@
   stylix = {
     enable = true;
     base16Scheme = ./base16schemes/macchiato.yaml;
-    image = /home/ciflire/nixFlake/home/hyprland/wallpapers/landscapes/forrest.png;
+    image = ../home/hyprland/wallpapers/landscapes/forrest.png;
     autoEnable = true;
     polarity = "dark";
     cursor = {

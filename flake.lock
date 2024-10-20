@@ -236,11 +236,11 @@
         "systems": "systems_10"
       },
       "locked": {
-        "lastModified": 1726560853,
-        "narHash": "sha256-X6rJYSESBVr3hBoH0WbKE5KvhPU5bloyZ2L4K60/fPQ=",
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "c1dfcf08411b08f6b8615f7d8971a2bfa81d5e8a",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
         "type": "github"
       },
       "original": {
@@ -1033,7 +1033,7 @@
         "narHash": "sha256-f8k+BezKdJfmE+k7zgBJiohtS3VkkriycdXYsKOm3sc=",
         "rev": "2a4376be20d70feaa2b0e640c5041fb66ddc67ed",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/2a4376be20d70feaa2b0e640c5041fb66ddc67ed.tar.gz?rev=2a4376be20d70feaa2b0e640c5041fb66ddc67ed"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/2a4376be20d70feaa2b0e640c5041fb66ddc67ed.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -1079,11 +1079,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1729419823,
-        "narHash": "sha256-aivWiPtD6wB2xTljpAhHZx8xbwaiTJuwbkQUXSGAWsY=",
+        "lastModified": 1729423447,
+        "narHash": "sha256-KDTM3I1OoYRUj1yBunK4IEsq6pl8kTW7Ibg/3UWZIW0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6e909456a79c23646676b34d1b3f666a46859b32",
+        "rev": "632fcb59da0b4a1a270037d9959ef25475d7fdab",
         "type": "github"
       },
       "original": {
