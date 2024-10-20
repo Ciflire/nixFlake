@@ -52,10 +52,11 @@
         {
           name = "markdown";
           auto-format = true;
-          formatter.command = "${pkgs.deno}/bin/deno";
+          formatter.command = "dprint";
           formatter.args = [
             "fmt"
-            "-"
+            "--stdin"
+            "md"
           ];
         }
       ];

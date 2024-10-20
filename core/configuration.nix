@@ -54,7 +54,7 @@
     # LIBVA_DRIVER_NAME = "nvidia";
     # GBM_BACKEND = "nvidia-drm";
     # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    # AQ_DRM_DEVICES = "$HOME/.config/hypr/amdgpu:$HOME/.config/hypr/nvidia";
+    AQ_DRM_DEVICES = "$HOME/.config/hypr/amdgpu";
     # WLR_DRM_DEVICES = "$HOME/.config/hypr/amdgpu:$HOME/.config/hypr/nvidia";
     MOZ_ENABLE_WAYLAND = "1";
     SDL_VIDEODRIVER = "wayland,x11,windows";
@@ -121,6 +121,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.zsh.enable = true;
   users.users.ciflire = {
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
@@ -214,8 +215,6 @@
       fastfetch
       qpwgraph
       qemu
-      inputs.steam-tui.packages.${pkgs.system}.steam-tui
-      # librewolf
       appimage-run
       keymapp
       wev
@@ -251,7 +250,7 @@
     spice-protocol
     win-virtio
     win-spice
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
   ];
 
   programs.steam.enable = true;

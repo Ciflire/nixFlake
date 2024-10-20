@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.starship = {
     enable = true;
     # Configuration written to ~/.config/starship.toml
@@ -8,7 +9,9 @@
         success_symbol = "[   ](bold cyan)";
         error_symbol = "[   ](bold red)";
       };
-      nix_shell = { disabled = false; };
+      nix_shell = {
+        disabled = true;
+      };
       package.disabled = true;
     };
   };

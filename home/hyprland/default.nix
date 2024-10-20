@@ -6,7 +6,6 @@
 }:
 let
   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  quickshell = inputs.quickshell.packages.${pkgs.system}.default;
 in
 # hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland.overrideAttrs (old: {
 #   patches = [ ./patches/patch.txt ];
@@ -126,8 +125,8 @@ in
         "$mod SHIFT, ccedilla, movetoworkspace, 9"
         "$mod SHIFT, agrave, movetoworkspace, 10"
 
-        ''$mod , print, exec, grimblast save area - | satty -f -''
-        ''$mod SHIFT, print, exec, grimblast save active screen - | satty -f -''
+        ''$mod , print, exec, grimblast --freeze save area - | satty -f -''
+        ''$mod SHIFT, print, exec, grimblast --freeze save active screen - | satty -f -''
       ];
       bindm = [
         "$mod, mouse:272, movewindow"
@@ -161,7 +160,7 @@ in
         "float, class:^(xdg-desktop-portal)"
         "idleinhibit, class:(steam_app)"
         "float, class:^(satty)$"
-        "float, title:^(Extension: (Bitwarden - Free Password Manager) - Bitwarden — Mozilla Firefox)$"
+        "float, title:^.*Bitwarden.*$"
         "opacity 0.9 override 0.8 override 0.95 override,class:^(kitty)$"
       ];
       layerrule = [ "blur, top-bar" ];
@@ -176,6 +175,7 @@ in
       splash = true;
       splash_offset = 2.0;
       preload = [ "/home/ciflire/nixFlake/home/hyprland/wallpapers/landscapes/forrest.png" ];
+      # preload = [ "/home/ciflire/nixFlake/home/hyprland/wallpapers/2825710.gif" ];
 
       wallpaper = [ ",/home/ciflire/nixFlake/home/hyprland/wallpapers/landscapes/forrest.png" ];
 
@@ -271,6 +271,8 @@ in
 
     inputs.hyprpaper.packages.${pkgs.system}.hyprpaper
     inputs.hypridle.packages.${pkgs.system}.hypridle
+    inputs.hyprsunset.packages.${pkgs.system}.default
+    inputs.hyprsysteminfo.packages.${pkgs.system}.default
 
     # screenshots
     grimblast
@@ -282,8 +284,6 @@ in
     osu-lazer-bin
 
     qt5ct
-
-    quickshell
 
     playerctl
 

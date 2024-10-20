@@ -1,0 +1,392 @@
+sept. 13 12:09:04 g713 systemd[2253]: Started hypridle.
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG] Registered timeout rule for 150s:
+sept. 13 12:09:05 g713 hypridle[2332]:       on-timeout: loginctl lock-session
+sept. 13 12:09:05 g713 hypridle[2332]:       on-resume:
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG] Registered timeout rule for 120s:
+sept. 13 12:09:05 g713 hypridle[2332]:       on-timeout: /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -sd asus::kbd_backlight set 0
+sept. 13 12:09:05 g713 hypridle[2332]:       on-resume: /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -rd asus::kbd_backlight
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG] Registered timeout rule for 120s:
+sept. 13 12:09:05 g713 hypridle[2332]:       on-timeout: /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms off
+sept. 13 12:09:05 g713 hypridle[2332]:       on-resume: /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms on
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG] Registered timeout rule for 1800s:
+sept. 13 12:09:05 g713 hypridle[2332]:       on-timeout: systemctl suspend
+sept. 13 12:09:05 g713 hypridle[2332]:       on-resume:
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wl_seat v9
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]    > Bound to wl_seat v9
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wl_data_device_manager v3
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wl_compositor v6
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wl_subcompositor v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wl_shm v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wp_viewporter v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wp_tearing_control_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wp_fractional_scale_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zxdg_output_manager_v1 v3
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wp_cursor_shape_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwp_idle_inhibit_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwp_relative_pointer_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zxdg_decoration_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wp_alpha_modifier_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwlr_gamma_control_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: ext_foreign_toplevel_list_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwp_pointer_gestures_v1 v3
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwlr_foreign_toplevel_manager_v1 v3
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwp_keyboard_shortcuts_inhibit_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwp_text_input_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwp_text_input_manager_v3 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwp_pointer_constraints_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwlr_output_power_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: xdg_activation_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: ext_idle_notifier_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]    > Bound to ext_idle_notifier_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: ext_session_lock_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwp_input_method_manager_v2 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwp_virtual_keyboard_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwlr_virtual_pointer_manager_v1 v2
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwlr_output_manager_v1 v4
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: org_kde_kwin_server_decoration_manager v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: hyprland_focus_grab_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwp_tablet_manager_v2 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwlr_layer_shell_v1 v5
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wp_presentation v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: xdg_wm_base v6
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwlr_data_control_manager_v1 v2
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwp_primary_selection_device_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: xwayland_shell_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwlr_screencopy_manager_v1 v3
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: hyprland_toplevel_export_manager_v1 v2
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: hyprland_global_shortcuts_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: xdg_dialog_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wp_drm_lease_device_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wp_linux_drm_syncobj_manager_v1 v1
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wl_drm v2
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: zwp_linux_dmabuf_v1 v5
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG]   | got iface: wl_output v4
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG] found 4 rules
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG] wayland done, registering dbus
+sept. 13 12:09:05 g713 hypridle[2332]: [LOG] Using dbus path /org/freedesktop/login1/session/_33
+sept. 13 12:37:53 g713 hypridle[2332]: [LOG] Idled: rule 3a542058
+sept. 13 12:37:53 g713 hypridle[2332]: [LOG] Running /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -sd asus::kbd_backlight set 0
+sept. 13 12:37:53 g713 hypridle[2332]: [LOG] Executing /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -sd asus::kbd_backlight set 0
+sept. 13 12:37:53 g713 hypridle[2332]: [LOG] Process Created with pid 16606
+sept. 13 12:37:53 g713 hypridle[2332]: [LOG] Idled: rule 3a5420a0
+sept. 13 12:37:53 g713 hypridle[2332]: [LOG] Running /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms off
+sept. 13 12:37:53 g713 hypridle[2332]: [LOG] Executing /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms off
+sept. 13 12:37:53 g713 hypridle[2332]: [LOG] Process Created with pid 16608
+sept. 13 12:37:53 g713 hypridle[16608]: ok
+sept. 13 12:38:23 g713 hypridle[2332]: [LOG] Idled: rule 3a542010
+sept. 13 12:38:23 g713 hypridle[2332]: [LOG] Running loginctl lock-session
+sept. 13 12:38:23 g713 hypridle[2332]: [LOG] Executing loginctl lock-session
+sept. 13 12:38:23 g713 hypridle[2332]: [LOG] Process Created with pid 16758
+sept. 13 12:38:23 g713 hypridle[2332]: [LOG] Got dbus .Session
+sept. 13 12:38:23 g713 hypridle[2332]: [LOG] Got Lock from dbus
+sept. 13 12:38:23 g713 hypridle[2332]: [LOG] Locking with pidof hyprlock || nvidia-offload /nix/store/648wzs99jk41ljjjdm6bs02k0ay049b2-hyprlock-0.4.1+date=2024-09-05_153977a/bin/hyprlock
+sept. 13 12:38:23 g713 hypridle[2332]: [LOG] Executing pidof hyprlock || nvidia-offload /nix/store/648wzs99jk41ljjjdm6bs02k0ay049b2-hyprlock-0.4.1+date=2024-09-05_153977a/bin/hyprlock
+sept. 13 12:38:23 g713 hypridle[2332]: [LOG] Process Created with pid 16760
+sept. 13 12:38:23 g713 hypridle[16760]: did not find extension DRI_Mesa version 2
+sept. 13 12:38:23 g713 hypridle[16760]: did not find extension DRI_IMAGE_DRIVER version 2
+sept. 13 12:38:23 g713 hypridle[16760]: failed to bind extensions
+sept. 13 12:38:23 g713 hypridle[16760]: did not find extension DRI_Mesa version 2
+sept. 13 12:38:23 g713 hypridle[16760]: did not find extension DRI_IMAGE_DRIVER version 2
+sept. 13 12:38:23 g713 hypridle[16760]: failed to bind extensions
+sept. 13 12:38:23 g713 hypridle[16760]: did not find extension DRI_Mesa version 2
+sept. 13 12:38:23 g713 hypridle[16760]: failed to bind extensions
+sept. 13 12:38:23 g713 hypridle[16760]: did not find extension DRI_Mesa version 2
+sept. 13 12:38:23 g713 hypridle[16760]: did not find extension DRI_IMAGE_DRIVER version 2
+sept. 13 12:38:23 g713 hypridle[16760]: failed to bind extensions
+sept. 13 12:38:23 g713 hypridle[16760]: did not find extension DRI_Mesa version 2
+sept. 13 12:38:23 g713 hypridle[16760]: did not find extension DRI_IMAGE_DRIVER version 2
+sept. 13 12:38:23 g713 hypridle[16760]: failed to bind extensions
+sept. 13 12:38:23 g713 hypridle[16760]: did not find extension DRI_Mesa version 2
+sept. 13 12:38:23 g713 hypridle[16760]: failed to bind extensions
+sept. 13 12:38:23 g713 systemd-coredump[16764]: Process 16760 (hyprlock) of user 1000 dumped core.
+                                                
+                                                Module libxcb-present.so.0 without build-id.
+                                                Module libxcb-dri3.so.0 without build-id.
+                                                Module libX11-xcb.so.1 without build-id.
+                                                Module libbrotlicommon.so.1 without build-id.
+                                                Module libXdmcp.so.6 without build-id.
+                                                Module libXau.so.6 without build-id.
+                                                Module libdatrie.so.1 without build-id.
+                                                Module libselinux.so.1 without build-id.
+                                                Module libbrotlidec.so.1 without build-id.
+                                                Module libbz2.so.1 without build-id.
+                                                Module libxcb-randr.so.0 without build-id.
+                                                Module libexpat.so.1 without build-id.
+                                                Module libxcb-shm.so.0 without build-id.
+                                                Module libxcb-render.so.0 without build-id.
+                                                Module libxcb.so.1 without build-id.
+                                                Module libXrender.so.1 without build-id.
+                                                Module libXext.so.6 without build-id.
+                                                Module libX11.so.6 without build-id.
+                                                Module libpng16.so.16 without build-id.
+                                                Module libgraphite2.so.3 without build-id.
+                                                Module libfreetype.so.6 without build-id.
+                                                Module libpcre2-8.so.0 without build-id.
+                                                Module libthai.so.0 without build-id.
+                                                Module libfribidi.so.0 without build-id.
+                                                Module libfontconfig.so.1 without build-id.
+                                                Module libpangoft2-1.0.so.0 without build-id.
+                                                Module libz.so.1 without build-id.
+                                                Module libsharpyuv.so.0 without build-id.
+                                                Module libffi.so.8 without build-id.
+                                                Module libGLdispatch.so.0 without build-id.
+                                                Module libaudit.so.1 without build-id.
+                                                Module libgcc_s.so.1 without build-id.
+                                                Module libstdc++.so.6 without build-id.
+                                                Module libGLX.so.0 without build-id.
+                                                Module libhyprutils.so.1 without build-id.
+                                                Module libdrm.so.2 without build-id.
+                                                Module libharfbuzz.so.0 without build-id.
+                                                Module libpango-1.0.so.0 without build-id.
+                                                Module libpangocairo-1.0.so.0 without build-id.
+                                                Module libmagic.so.1 without build-id.
+                                                Module libwebp.so.7 without build-id.
+                                                Module libjpeg.so.62 without build-id.
+                                                Module libxkbcommon.so.0 without build-id.
+                                                Module libOpenGL.so.0 without build-id.
+                                                Module libhyprlang.so.2 without build-id.
+                                                Module libEGL.so.1 without build-id.
+                                                Module libpam.so.0 without build-id.
+                                                Module hyprlock without build-id.
+                                                Stack trace of thread 16760:
+                                                #0  0x00007f32775b57dc __pthread_kill_implementation (libc.so.6 + 0x927dc)
+                                                #1  0x00007f3277563516 raise (libc.so.6 + 0x40516)
+                                                #2  0x00007f327754b935 abort (libc.so.6 + 0x28935)
+                                                #3  0x0000000000462d7a _Z13createProgramRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_ (hyprlock + 0x62d7a)
+                                                #4  0x0000000000463374 _ZN9CRendererC2Ev (hyprlock + 0x63374)
+                                                #5  0x0000000000444327 _ZN9CHyprlock3runEv (hyprlock + 0x44327)
+                                                #6  0x0000000000416a26 main (hyprlock + 0x16a26)
+                                                #7  0x00007f327754d14e __libc_start_call_main (libc.so.6 + 0x2a14e)
+                                                #8  0x00007f327754d209 __libc_start_main@@GLIBC_2.34 (libc.so.6 + 0x2a209)
+                                                #9  0x0000000000417745 _start (hyprlock + 0x17745)
+                                                ELF object binary architecture: AMD x86-64
+sept. 13 13:03:49 g713 hypridle[2332]: [LOG] Resumed: rule 3a542010
+sept. 13 13:03:49 g713 hypridle[2332]: [LOG] Ignoring, onRestore is empty.
+sept. 13 13:03:49 g713 hypridle[2332]: [LOG] Resumed: rule 3a542058
+sept. 13 13:03:49 g713 hypridle[2332]: [LOG] Running /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -rd asus::kbd_backlight
+sept. 13 13:03:49 g713 hypridle[2332]: [LOG] Executing /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -rd asus::kbd_backlight
+sept. 13 13:03:49 g713 hypridle[2332]: [LOG] Process Created with pid 23701
+sept. 13 13:03:49 g713 hypridle[2332]: [LOG] Resumed: rule 3a5420a0
+sept. 13 13:03:49 g713 hypridle[2332]: [LOG] Running /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms on
+sept. 13 13:03:49 g713 hypridle[2332]: [LOG] Executing /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms on
+sept. 13 13:03:49 g713 hypridle[2332]: [LOG] Process Created with pid 23703
+sept. 13 13:03:49 g713 hypridle[23701]: Device 'asus::kbd_backlight' of class 'leds':
+sept. 13 13:03:49 g713 hypridle[23701]:         Current brightness: 1 (33%)
+sept. 13 13:03:49 g713 hypridle[23701]:         Max brightness: 3
+sept. 13 13:03:49 g713 hypridle[23703]: ok
+sept. 13 13:15:53 g713 hypridle[2332]: [LOG] Idled: rule 3a542058
+sept. 13 13:15:53 g713 hypridle[2332]: [LOG] Running /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -sd asus::kbd_backlight set 0
+sept. 13 13:15:53 g713 hypridle[2332]: [LOG] Executing /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -sd asus::kbd_backlight set 0
+sept. 13 13:15:53 g713 hypridle[2332]: [LOG] Process Created with pid 27309
+sept. 13 13:15:53 g713 hypridle[2332]: [LOG] Idled: rule 3a5420a0
+sept. 13 13:15:53 g713 hypridle[2332]: [LOG] Running /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms off
+sept. 13 13:15:53 g713 hypridle[2332]: [LOG] Executing /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms off
+sept. 13 13:15:53 g713 hypridle[2332]: [LOG] Process Created with pid 27311
+sept. 13 13:15:53 g713 hypridle[27309]: Updated device 'asus::kbd_backlight':
+sept. 13 13:15:53 g713 hypridle[27309]: Device 'asus::kbd_backlight' of class 'leds':
+sept. 13 13:15:53 g713 hypridle[27309]:         Current brightness: 0 (0%)
+sept. 13 13:15:53 g713 hypridle[27309]:         Max brightness: 3
+sept. 13 13:15:54 g713 hypridle[27311]: ok
+sept. 13 13:15:55 g713 hypridle[2332]: [LOG] Resumed: rule 3a542058
+sept. 13 13:15:55 g713 hypridle[2332]: [LOG] Running /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -rd asus::kbd_backlight
+sept. 13 13:15:55 g713 hypridle[2332]: [LOG] Executing /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -rd asus::kbd_backlight
+sept. 13 13:15:55 g713 hypridle[2332]: [LOG] Process Created with pid 27318
+sept. 13 13:15:55 g713 hypridle[2332]: [LOG] Resumed: rule 3a5420a0
+sept. 13 13:15:55 g713 hypridle[2332]: [LOG] Running /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms on
+sept. 13 13:15:55 g713 hypridle[2332]: [LOG] Executing /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms on
+sept. 13 13:15:55 g713 hypridle[2332]: [LOG] Process Created with pid 27320
+sept. 13 13:15:55 g713 hypridle[27318]: Device 'asus::kbd_backlight' of class 'leds':
+sept. 13 13:15:55 g713 hypridle[27318]:         Current brightness: 1 (33%)
+sept. 13 13:15:55 g713 hypridle[27318]:         Max brightness: 3
+sept. 13 13:15:55 g713 hypridle[27320]: ok
+sept. 13 13:17:55 g713 hypridle[2332]: [LOG] Idled: rule 3a542058
+sept. 13 13:17:55 g713 hypridle[2332]: [LOG] Running /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -sd asus::kbd_backlight set 0
+sept. 13 13:17:55 g713 hypridle[2332]: [LOG] Executing /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -sd asus::kbd_backlight set 0
+sept. 13 13:17:55 g713 hypridle[2332]: [LOG] Process Created with pid 27879
+sept. 13 13:17:55 g713 hypridle[2332]: [LOG] Idled: rule 3a5420a0
+sept. 13 13:17:55 g713 hypridle[2332]: [LOG] Running /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms off
+sept. 13 13:17:55 g713 hypridle[2332]: [LOG] Executing /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms off
+sept. 13 13:17:55 g713 hypridle[2332]: [LOG] Process Created with pid 27881
+sept. 13 13:17:55 g713 hypridle[27879]: Updated device 'asus::kbd_backlight':
+sept. 13 13:17:55 g713 hypridle[27879]: Device 'asus::kbd_backlight' of class 'leds':
+sept. 13 13:17:55 g713 hypridle[27879]:         Current brightness: 0 (0%)
+sept. 13 13:17:55 g713 hypridle[27879]:         Max brightness: 3
+sept. 13 13:17:55 g713 hypridle[27881]: ok
+sept. 13 13:17:57 g713 hypridle[2332]: [LOG] Resumed: rule 3a542058
+sept. 13 13:17:57 g713 hypridle[2332]: [LOG] Running /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -rd asus::kbd_backlight
+sept. 13 13:17:57 g713 hypridle[2332]: [LOG] Executing /nix/store/5sapnnqarcxqiqwcpqfqjj6hhhy6fprr-brightnessctl-0.5.1/bin/brightnessctl -rd asus::kbd_backlight
+sept. 13 13:17:57 g713 hypridle[2332]: [LOG] Process Created with pid 27888
+sept. 13 13:17:57 g713 hypridle[2332]: [LOG] Resumed: rule 3a5420a0
+sept. 13 13:17:57 g713 hypridle[2332]: [LOG] Running /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms on
+sept. 13 13:17:57 g713 hypridle[2332]: [LOG] Executing /nix/store/mhckg0v7nrw5xf7mjwx0rxih80pgfcq5-hyprland-0.43.0+date=2024-09-12_118be4d/bin/hyprctl dispatch dpms on
+sept. 13 13:17:57 g713 hypridle[2332]: [LOG] Process Created with pid 27890
+sept. 13 13:17:57 g713 hypridle[27888]: Device 'asus::kbd_backlight' of class 'leds':
+sept. 13 13:17:57 g713 hypridle[27888]:         Current brightness: 1 (33%)
+sept. 13 13:17:57 g713 hypridle[27888]:         Max brightness: 3
+sept. 13 13:17:57 g713 hypridle[27890]: ok
+sept. 13 13:30:05 g713 hypridle[2332]: [LOG] Got dbus .Session
+sept. 13 13:30:05 g713 hypridle[2332]: [LOG] Got Lock from dbus
+sept. 13 13:30:05 g713 hypridle[2332]: [LOG] Locking with pidof hyprlock || nvidia-offload /nix/store/648wzs99jk41ljjjdm6bs02k0ay049b2-hyprlock-0.4.1+date=2024-09-05_153977a/bin/hyprlock
+sept. 13 13:30:05 g713 hypridle[2332]: [LOG] Executing pidof hyprlock || nvidia-offload /nix/store/648wzs99jk41ljjjdm6bs02k0ay049b2-hyprlock-0.4.1+date=2024-09-05_153977a/bin/hyprlock
+sept. 13 13:30:05 g713 hypridle[2332]: [LOG] Process Created with pid 36998
+sept. 13 13:30:05 g713 hypridle[36998]: did not find extension DRI_Mesa version 2
+sept. 13 13:30:05 g713 hypridle[36998]: did not find extension DRI_IMAGE_DRIVER version 2
+sept. 13 13:30:05 g713 hypridle[36998]: failed to bind extensions
+sept. 13 13:30:05 g713 hypridle[36998]: did not find extension DRI_Mesa version 2
+sept. 13 13:30:05 g713 hypridle[36998]: did not find extension DRI_IMAGE_DRIVER version 2
+sept. 13 13:30:05 g713 hypridle[36998]: failed to bind extensions
+sept. 13 13:30:05 g713 hypridle[36998]: did not find extension DRI_Mesa version 2
+sept. 13 13:30:05 g713 hypridle[36998]: failed to bind extensions
+sept. 13 13:30:05 g713 hypridle[36998]: did not find extension DRI_Mesa version 2
+sept. 13 13:30:05 g713 hypridle[36998]: did not find extension DRI_IMAGE_DRIVER version 2
+sept. 13 13:30:05 g713 hypridle[36998]: failed to bind extensions
+sept. 13 13:30:05 g713 hypridle[36998]: did not find extension DRI_Mesa version 2
+sept. 13 13:30:05 g713 hypridle[36998]: did not find extension DRI_IMAGE_DRIVER version 2
+sept. 13 13:30:05 g713 hypridle[36998]: failed to bind extensions
+sept. 13 13:30:05 g713 hypridle[36998]: did not find extension DRI_Mesa version 2
+sept. 13 13:30:05 g713 hypridle[36998]: failed to bind extensions
+sept. 13 13:30:05 g713 systemd-coredump[37040]: Process 36998 (hyprlock) of user 1000 dumped core.
+                                                
+                                                Module libxcb-present.so.0 without build-id.
+                                                Module libxcb-dri3.so.0 without build-id.
+                                                Module libX11-xcb.so.1 without build-id.
+                                                Module libbrotlicommon.so.1 without build-id.
+                                                Module libXdmcp.so.6 without build-id.
+                                                Module libXau.so.6 without build-id.
+                                                Module libdatrie.so.1 without build-id.
+                                                Module libselinux.so.1 without build-id.
+                                                Module libbrotlidec.so.1 without build-id.
+                                                Module libbz2.so.1 without build-id.
+                                                Module libxcb-randr.so.0 without build-id.
+                                                Module libexpat.so.1 without build-id.
+                                                Module libxcb-shm.so.0 without build-id.
+                                                Module libxcb-render.so.0 without build-id.
+                                                Module libxcb.so.1 without build-id.
+                                                Module libXrender.so.1 without build-id.
+                                                Module libXext.so.6 without build-id.
+                                                Module libX11.so.6 without build-id.
+                                                Module libpng16.so.16 without build-id.
+                                                Module libgraphite2.so.3 without build-id.
+                                                Module libfreetype.so.6 without build-id.
+                                                Module libpcre2-8.so.0 without build-id.
+                                                Module libthai.so.0 without build-id.
+                                                Module libfribidi.so.0 without build-id.
+                                                Module libfontconfig.so.1 without build-id.
+                                                Module libpangoft2-1.0.so.0 without build-id.
+                                                Module libz.so.1 without build-id.
+                                                Module libsharpyuv.so.0 without build-id.
+                                                Module libffi.so.8 without build-id.
+                                                Module libGLdispatch.so.0 without build-id.
+                                                Module libaudit.so.1 without build-id.
+                                                Module libgcc_s.so.1 without build-id.
+                                                Module libstdc++.so.6 without build-id.
+                                                Module libGLX.so.0 without build-id.
+                                                Module libhyprutils.so.1 without build-id.
+                                                Module libdrm.so.2 without build-id.
+                                                Module libharfbuzz.so.0 without build-id.
+                                                Module libpango-1.0.so.0 without build-id.
+                                                Module libpangocairo-1.0.so.0 without build-id.
+                                                Module libmagic.so.1 without build-id.
+                                                Module libwebp.so.7 without build-id.
+                                                Module libjpeg.so.62 without build-id.
+                                                Module libxkbcommon.so.0 without build-id.
+                                                Module libOpenGL.so.0 without build-id.
+                                                Module libhyprlang.so.2 without build-id.
+                                                Module libEGL.so.1 without build-id.
+                                                Module libpam.so.0 without build-id.
+                                                Module hyprlock without build-id.
+                                                Stack trace of thread 36998:
+                                                #0  0x00007f45ffa9b7dc __pthread_kill_implementation (libc.so.6 + 0x927dc)
+                                                #1  0x00007f45ffa49516 raise (libc.so.6 + 0x40516)
+                                                #2  0x00007f45ffa31935 abort (libc.so.6 + 0x28935)
+                                                #3  0x0000000000462d7a _Z13createProgramRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_ (hyprlock + 0x62d7a)
+                                                #4  0x0000000000463374 _ZN9CRendererC2Ev (hyprlock + 0x63374)
+                                                #5  0x0000000000444327 _ZN9CHyprlock3runEv (hyprlock + 0x44327)
+                                                #6  0x0000000000416a26 main (hyprlock + 0x16a26)
+                                                #7  0x00007f45ffa3314e __libc_start_call_main (libc.so.6 + 0x2a14e)
+                                                #8  0x00007f45ffa33209 __libc_start_main@@GLIBC_2.34 (libc.so.6 + 0x2a209)
+                                                #9  0x0000000000417745 _start (hyprlock + 0x17745)
+                                                ELF object binary architecture: AMD x86-64
+sept. 13 13:30:56 g713 hypridle[2332]: [LOG] Got dbus .Session
+sept. 13 13:30:56 g713 hypridle[2332]: [LOG] Got Lock from dbus
+sept. 13 13:30:56 g713 hypridle[2332]: [LOG] Locking with pidof hyprlock || nvidia-offload /nix/store/648wzs99jk41ljjjdm6bs02k0ay049b2-hyprlock-0.4.1+date=2024-09-05_153977a/bin/hyprlock
+sept. 13 13:30:56 g713 hypridle[2332]: [LOG] Executing pidof hyprlock || nvidia-offload /nix/store/648wzs99jk41ljjjdm6bs02k0ay049b2-hyprlock-0.4.1+date=2024-09-05_153977a/bin/hyprlock
+sept. 13 13:30:56 g713 hypridle[2332]: [LOG] Process Created with pid 37370
+sept. 13 13:30:57 g713 hypridle[37370]: did not find extension DRI_Mesa version 2
+sept. 13 13:30:57 g713 hypridle[37370]: did not find extension DRI_IMAGE_DRIVER version 2
+sept. 13 13:30:57 g713 hypridle[37370]: failed to bind extensions
+sept. 13 13:30:57 g713 hypridle[37370]: did not find extension DRI_Mesa version 2
+sept. 13 13:30:57 g713 hypridle[37370]: did not find extension DRI_IMAGE_DRIVER version 2
+sept. 13 13:30:57 g713 hypridle[37370]: failed to bind extensions
+sept. 13 13:30:57 g713 hypridle[37370]: did not find extension DRI_Mesa version 2
+sept. 13 13:30:57 g713 hypridle[37370]: failed to bind extensions
+sept. 13 13:30:57 g713 hypridle[37370]: did not find extension DRI_Mesa version 2
+sept. 13 13:30:57 g713 hypridle[37370]: did not find extension DRI_IMAGE_DRIVER version 2
+sept. 13 13:30:57 g713 hypridle[37370]: failed to bind extensions
+sept. 13 13:30:57 g713 hypridle[37370]: did not find extension DRI_Mesa version 2
+sept. 13 13:30:57 g713 hypridle[37370]: did not find extension DRI_IMAGE_DRIVER version 2
+sept. 13 13:30:57 g713 hypridle[37370]: failed to bind extensions
+sept. 13 13:30:57 g713 hypridle[37370]: did not find extension DRI_Mesa version 2
+sept. 13 13:30:57 g713 hypridle[37370]: failed to bind extensions
+sept. 13 13:30:57 g713 systemd-coredump[37405]: Process 37370 (hyprlock) of user 1000 dumped core.
+                                                
+                                                Module libxcb-present.so.0 without build-id.
+                                                Module libxcb-dri3.so.0 without build-id.
+                                                Module libX11-xcb.so.1 without build-id.
+                                                Module libbrotlicommon.so.1 without build-id.
+                                                Module libXdmcp.so.6 without build-id.
+                                                Module libXau.so.6 without build-id.
+                                                Module libdatrie.so.1 without build-id.
+                                                Module libselinux.so.1 without build-id.
+                                                Module libbrotlidec.so.1 without build-id.
+                                                Module libbz2.so.1 without build-id.
+                                                Module libxcb-randr.so.0 without build-id.
+                                                Module libexpat.so.1 without build-id.
+                                                Module libxcb-shm.so.0 without build-id.
+                                                Module libxcb-render.so.0 without build-id.
+                                                Module libxcb.so.1 without build-id.
+                                                Module libXrender.so.1 without build-id.
+                                                Module libXext.so.6 without build-id.
+                                                Module libX11.so.6 without build-id.
+                                                Module libpng16.so.16 without build-id.
+                                                Module libgraphite2.so.3 without build-id.
+                                                Module libfreetype.so.6 without build-id.
+                                                Module libpcre2-8.so.0 without build-id.
+                                                Module libthai.so.0 without build-id.
+                                                Module libfribidi.so.0 without build-id.
+                                                Module libfontconfig.so.1 without build-id.
+                                                Module libpangoft2-1.0.so.0 without build-id.
+                                                Module libz.so.1 without build-id.
+                                                Module libsharpyuv.so.0 without build-id.
+                                                Module libffi.so.8 without build-id.
+                                                Module libGLdispatch.so.0 without build-id.
+                                                Module libaudit.so.1 without build-id.
+                                                Module libgcc_s.so.1 without build-id.
+                                                Module libstdc++.so.6 without build-id.
+                                                Module libGLX.so.0 without build-id.
+                                                Module libhyprutils.so.1 without build-id.
+                                                Module libdrm.so.2 without build-id.
+                                                Module libharfbuzz.so.0 without build-id.
+                                                Module libpango-1.0.so.0 without build-id.
+                                                Module libpangocairo-1.0.so.0 without build-id.
+                                                Module libmagic.so.1 without build-id.
+                                                Module libwebp.so.7 without build-id.
+                                                Module libjpeg.so.62 without build-id.
+                                                Module libxkbcommon.so.0 without build-id.
+                                                Module libOpenGL.so.0 without build-id.
+                                                Module libhyprlang.so.2 without build-id.
+                                                Module libEGL.so.1 without build-id.
+                                                Module libpam.so.0 without build-id.
+                                                Module hyprlock without build-id.
+                                                Stack trace of thread 37370:
+                                                #0  0x00007f992389b7dc __pthread_kill_implementation (libc.so.6 + 0x927dc)
+                                                #1  0x00007f9923849516 raise (libc.so.6 + 0x40516)
+                                                #2  0x00007f9923831935 abort (libc.so.6 + 0x28935)
+                                                #3  0x0000000000462d7a _Z13createProgramRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_ (hyprlock + 0x62d7a)
+                                                #4  0x0000000000463374 _ZN9CRendererC2Ev (hyprlock + 0x63374)
+                                                #5  0x0000000000444327 _ZN9CHyprlock3runEv (hyprlock + 0x44327)
+                                                #6  0x0000000000416a26 main (hyprlock + 0x16a26)
+                                                #7  0x00007f992383314e __libc_start_call_main (libc.so.6 + 0x2a14e)
+                                                #8  0x00007f9923833209 __libc_start_main@@GLIBC_2.34 (libc.so.6 + 0x2a209)
+                                                #9  0x0000000000417745 _start (hyprlock + 0x17745)
+                                                ELF object binary architecture: AMD x86-64

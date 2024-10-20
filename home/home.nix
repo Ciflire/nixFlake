@@ -27,25 +27,6 @@
   home.homeDirectory = "/home/ciflire";
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      sdl3 = prev.sdl.overrideAttrs (old: {
-        src = prev.fetchFromGitHub {
-          owner = "libsdl-org";
-          repo = "SDL";
-          rev = "30e93b40c2a6fd2219ad55e820f5d037e3619c2c";
-          # If you don't know the hash, the first time, set:
-          # hash = "";
-          # then nix will fail the build with such an error message:
-          # hash mismatch in fixed-output derivation '/nix/store/m1ga09c0z1a6n7rj8ky3s31dpgalsn0n-source':
-          # specified: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
-          # got:    sha256-173gxk0ymiw94glyjzjizp8bv8g72gwkjhacigd1an09jshdrjb4
-          hash = "sha256-I/D+KeSBUHnWj0y33WD+I8N9oMcvKCCW4RTAsEEl2Iw=";
-        };
-      });
-    })
-  ];
-
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
